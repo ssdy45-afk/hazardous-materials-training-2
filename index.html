@@ -344,6 +344,7 @@ SPOTS.forEach(s=>{
   marker.on('click',()=>{
     showPanel(s);
     map.setView([s.lat,s.lng],13,{animate:true});
+    window.open(s.gmaps, '_blank'); // 마커 클릭 시 구글맵 즉시 열기
   });
   markerObjs[s.id]=marker;
 });
