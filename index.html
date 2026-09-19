@@ -101,7 +101,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   .leaflet-popup-content{min-width:230px!important}
   .mobile-hide{display:none!important}
 }
-.fab{position:fixed;bottom:20px;left:20px;background:#ec4899;color:white;border-radius:50px;padding:12px 20px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 4px 15px rgba(236,72,153,0.4);z-index:9999;display:flex;align-items:center;gap:8px;border:none}
+.fab-container{position:fixed;bottom:20px;left:20px;z-index:9999;display:flex;gap:10px}
+.fab-btn{color:white;border-radius:50px;padding:12px 18px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.3);border:none;display:flex;align-items:center;gap:6px;transition:transform 0.1s}
+.fab-btn:active{transform:scale(0.95)}
 .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);backdrop-filter:blur(5px);z-index:10000;justify-content:center;align-items:center}
 .modal-content{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:20px;width:90%;max-width:400px;color:var(--text);box-shadow:0 10px 40px rgba(0,0,0,0.5)}
 .modal-title{font-size:18px;font-weight:800;margin-bottom:15px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:15px}
@@ -344,7 +346,6 @@ SPOTS.forEach(s=>{
   marker.on('click',()=>{
     showPanel(s);
     map.setView([s.lat,s.lng],13,{animate:true});
-    window.open(s.gmaps, '_blank'); // 마커 클릭 시 구글맵 즉시 열기
   });
   markerObjs[s.id]=marker;
 });
@@ -412,9 +413,10 @@ const LC=L.Control.extend({
 });
 new LC().addTo(map);
 </script>
-<button class="fab" onclick="document.getElementById('docModal').style.display='flex'">
-  📋 예약 서류
-</button>
+<div class="fab-container">
+  <button class="fab-btn" style="background:#8b5cf6" onclick="document.getElementById('itineraryModal').style.display='flex'">📅 전체 일정 요약</button>
+  <button class="fab-btn" style="background:#ec4899" onclick="document.getElementById('docModal').style.display='flex'">📋 예약 서류</button>
+</div>
 
 <div class="modal-overlay" id="docModal" onclick="if(event.target==this) this.style.display='none'">
   <div class="modal-content">
@@ -452,5 +454,31 @@ new LC().addTo(map);
     </a>
   </div>
 </div>
+
+<div class="modal-overlay" id="itineraryModal" onclick="if(event.target==this) this.style.display='none'">
+  <div class="modal-content" style="max-height:85vh;overflow-y:auto;">
+    <div class="modal-title" style="position:sticky;top:-20px;background:var(--s1);padding-top:20px;z-index:10;margin-top:-20px;">
+      📅 전체 일정 한눈에 보기
+      <button class="close-btn" onclick="document.getElementById('itineraryModal').style.display='none'">✖</button>
+    </div>
+    <div id="itineraryContent"></div>
+  </div>
+</div>
+
+<script>
+let itiHtml = '';
+[1,2,3,4].forEach(d => {
+  itiHtml += `<h3 style="color:${COL[d]};margin:20px 0 10px;border-bottom:1px solid ${COL[d]}33;padding-bottom:8px;">${DL[d]}</h3>`;
+  SPOTS.filter(s=>s.d===d).forEach(s => {
+    itiHtml += `
+      <div style="margin-bottom:12px;background:rgba(255,255,255,0.04);padding:14px;border-radius:10px;border-left:4px solid ${s.col||COL[d]}">
+        <div style="font-weight:700;font-size:15px;color:white;margin-bottom:6px;">${s.icon} ${s.name}</div>
+        <div style="font-size:13px;color:#cbd5e1;line-height:1.5;">${s.note}</div>
+      </div>
+    `;
+  });
+});
+document.getElementById('itineraryContent').innerHTML = itiHtml;
+</script>
 </body>
 </html>
