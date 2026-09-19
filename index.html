@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>🌺 오키나와 3박4일 여행 플래너 · 실시간 지도</title>
+<title>?�� ?�키?��? 3�????�행 ?�래??· ?�시�?지??/title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -106,58 +106,58 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 <body>
 
 <div class="hdr">
- <span style="font-size:1.65rem;filter:drop-shadow(0 0 8px rgba(251,191,36,.55))">🌺</span>
+ <span style="font-size:1.65rem;filter:drop-shadow(0 0 8px rgba(251,191,36,.55))">?��</span>
  <div class="hdr-t">
-  <h1>오키나와 3박4일 종합 여행 지도 · OpenStreetMap 실시간</h1>
-  <p>2026.09.23~26 · 진에어 LJ0341/42 (S567J7) · Honda Odyssey (TRUSTGO) · 6인 · 마커 클릭 → 상세정보 & 구글맵</p>
+  <h1>?�키?��? 3�???종합 ?�행 지??· OpenStreetMap ?�시�?/h1>
+  <p>2026.09.23~26 · 진에??LJ0341/42 (S567J7) · Honda Odyssey (TRUSTGO) · 6??· 마커 ?�릭 ???�세?�보 & 구�?�?/p>
  </div>
  <div class="hdr-bs">
-  <span class="hb" style="border-color:rgba(56,189,248,.4);color:#7dd3fc;background:rgba(56,189,248,.08)">✈ S567J7</span>
-  <span class="hb" style="border-color:rgba(52,211,153,.4);color:#6ee7b7;background:rgba(52,211,153,.08)">🚐 Honda Odyssey</span>
-  <a href="https://www.google.co.kr/maps/@26.2587863,127.7744032,12z" target="_blank" class="hb" style="border-color:rgba(66,133,244,.4);color:#7eb3ff;background:rgba(66,133,244,.08)">🗺 Google Maps</a>
+  <span class="hb" style="border-color:rgba(56,189,248,.4);color:#7dd3fc;background:rgba(56,189,248,.08)">??S567J7</span>
+  <span class="hb" style="border-color:rgba(52,211,153,.4);color:#6ee7b7;background:rgba(52,211,153,.08)">?�� Honda Odyssey</span>
+  <a href="https://www.google.co.kr/maps/@26.2587863,127.7744032,12z" target="_blank" class="hb" style="border-color:rgba(66,133,244,.4);color:#7eb3ff;background:rgba(66,133,244,.08)">?�� Google Maps</a>
  </div>
 </div>
 
 <div class="fbar">
- <button class="fbtn on" data-d="all" onclick="fd(this,'all')">🗓️ 전체 보기</button>
-  <button class="fbtn" data-d="1" onclick="fd(this,'1')">✈️ DAY1 · 9/23 도착 &amp; 나고시 이동</button>
-  <button class="fbtn" data-d="2" onclick="fd(this,'2')">🌊 DAY2 · 9/24 북부 투어</button>
-  <button class="fbtn" data-d="3" onclick="fd(this,'3')">🥩 DAY3 · 9/25 중부 관광 &amp; 스테이크</button>
-  <button class="fbtn" data-d="4" onclick="fd(this,'4')">🛫 DAY4 · 9/26 렌트카 반납 &amp; 귀국</button>
+ <button class="fbtn on" data-d="all" onclick="fd(this,'all')">?���??�체 보기</button>
+  <button class="fbtn" data-d="1" onclick="fd(this,'1')">?�️ DAY1 · 9/23 ?�착 &amp; ?�고???�동</button>
+  <button class="fbtn" data-d="2" onclick="fd(this,'2')">?�� DAY2 · 9/24 북�? ?�어</button>
+  <button class="fbtn" data-d="3" onclick="fd(this,'3')">?�� DAY3 · 9/25 중�? 관�?&amp; ?�테?�크</button>
+  <button class="fbtn" data-d="4" onclick="fd(this,'4')">?�� DAY4 · 9/26 ?�트�?반납 &amp; 귀�?/button>
 </div>
 
 <div class="main">
  <div id="map"></div>
  <div class="rpanel">
   <div class="pe" id="PE">
-   <div class="pe-icon">📍</div>
-   <h3>마커를 클릭하세요</h3>
-   <p>관광지별 소요시간·거리<br>주변 맛집 2~3곳 확인 😊</p>
+   <div class="pe-icon">?��</div>
+   <h3>마커�??�릭?�세??/h3>
+   <p>관광�?�??�요?�간·거리<br>주�? 맛집 2~3�??�인 ?��</p>
    <div class="leg">
-    <div class="leg-h">일별 경로 범례</div>
-    <div class="leg-r"><span class="leg-d" style="background:#f59e0b;box-shadow:0 0 6px #f59e0b60"></span>DAY1 · 9/23 도착 &amp; 나고시 이동</div>
-    <div class="leg-r"><span class="leg-d" style="background:#38bdf8;box-shadow:0 0 6px #38bdf860"></span>DAY2 · 9/24 북부 해양 투어</div>
-    <div class="leg-r"><span class="leg-d" style="background:#a78bfa;box-shadow:0 0 6px #a78bfa60"></span>DAY3 · 9/25 중부 관광 &amp; 스테이크</div>
-    <div class="leg-r"><span class="leg-d" style="background:#34d399;box-shadow:0 0 6px #34d39960"></span>DAY4 · 9/26 렌트카 반납 &amp; 귀국</div>
+    <div class="leg-h">?�별 경로 범�?</div>
+    <div class="leg-r"><span class="leg-d" style="background:#f59e0b;box-shadow:0 0 6px #f59e0b60"></span>DAY1 · 9/23 ?�착 &amp; ?�고???�동</div>
+    <div class="leg-r"><span class="leg-d" style="background:#38bdf8;box-shadow:0 0 6px #38bdf860"></span>DAY2 · 9/24 북�? ?�양 ?�어</div>
+    <div class="leg-r"><span class="leg-d" style="background:#a78bfa;box-shadow:0 0 6px #a78bfa60"></span>DAY3 · 9/25 중�? 관�?&amp; ?�테?�크</div>
+    <div class="leg-r"><span class="leg-d" style="background:#34d399;box-shadow:0 0 6px #34d39960"></span>DAY4 · 9/26 ?�트�?반납 &amp; 귀�?/div>
     <div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.07);font-size:10px;color:rgba(148,163,184,.4);line-height:1.75">
-     ─ ─ 점선 = 렌트카 이동 경로<br>
-     ① 숫자 = 당일 방문 순서<br>
-     🚐 Honda Odyssey (6인 미니밴)
+     ?� ?� ?�선 = ?�트�??�동 경로<br>
+     ???�자 = ?�일 방문 ?�서<br>
+     ?�� Honda Odyssey (6??미니�?
     </div>
    </div>
   </div>
   <div class="ibox" id="IB"></div>
   <div class="bstrip">
-   <div class="bs-h">📋 예약 정보 요약</div>
-   <div class="bsr"><span class="bsl">항공사/편명</span><span class="bsv">진에어 LJ0341/42</span></div>
-   <div class="bsr"><span class="bsl">예약번호</span><span class="bsv" style="color:#38bdf8">S567J7</span></div>
+   <div class="bs-h">?�� ?�약 ?�보 ?�약</div>
+   <div class="bsr"><span class="bsl">??��???�명</span><span class="bsv">진에??LJ0341/42</span></div>
+   <div class="bsr"><span class="bsl">?�약번호</span><span class="bsv" style="color:#38bdf8">S567J7</span></div>
    <div class="bsr"><span class="bsl">출발</span><span class="bsv">09/23 09:45 ICN T2</span></div>
-   <div class="bsr"><span class="bsl">도착</span><span class="bsv" style="color:#34d399">09/23 12:05 OKA T1</span></div>
-   <div class="bsr"><span class="bsl">귀국</span><span class="bsv">09/26 13:15 → 15:30</span></div>
-   <div class="bsr"><span class="bsl">렌트카</span><span class="bsv">Honda Odyssey · TRUSTGO</span></div>
-   <div class="bsr"><span class="bsl">픽업/반납</span><span class="bsv" style="color:#f59e0b">12:30 / ⚠️ 11:00 반납</span></div>
-   <div class="bsr"><span class="bsl">탑승인원</span><span class="bsv">6명</span></div>
-   <div class="bsr"><span class="bsl">숙소</span><span class="bsv">오리엔탈 리조트 3박</span></div>
+   <div class="bsr"><span class="bsl">?�착</span><span class="bsv" style="color:#34d399">09/23 12:05 OKA T1</span></div>
+   <div class="bsr"><span class="bsl">귀�?/span><span class="bsv">09/26 13:15 ??15:30</span></div>
+   <div class="bsr"><span class="bsl">?�트�?/span><span class="bsv">Honda Odyssey · TRUSTGO</span></div>
+   <div class="bsr"><span class="bsl">?�업/반납</span><span class="bsv" style="color:#f59e0b">12:30 / ?�️ 11:00 반납</span></div>
+   <div class="bsr"><span class="bsl">?�승?�원</span><span class="bsv">6�?/span></div>
+   <div class="bsr"><span class="bsl">?�소</span><span class="bsv">?�리?�탈 리조??3�?/span></div>
   </div>
  </div>
 </div>
@@ -172,89 +172,89 @@ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_D
 }).addTo(map);
 
 const COL={1:'#f59e0b',2:'#38bdf8',3:'#a78bfa',4:'#34d399'};
-const DL={1:'DAY1 · 9/23 도착',2:'DAY2 · 9/24 중부',3:'DAY3 · 9/25 남부',4:'DAY4 · 9/26 귀국'};
+const DL={1:'DAY1 · 9/23 ?�착',2:'DAY2 · 9/24 중�?',3:'DAY3 · 9/25 ?��?',4:'DAY4 · 9/26 귀�?};
 
 const SPOTS=[
- {id:'s1',d:1,n:1,icon:'✈️',name:'나하 공항 & 렌트카 픽업',jp:'那覇空港 T1 · TRUSTGO レンタカー',lat:26.1961,lng:127.6460,from:null,min:null,km:null,img:'https://upload.wikimedia.org/wikipedia/commons/e/ec/Naha_Airport13s3s4410.jpg',
-  note:'12:05 도착 → 입국수속 → 12:30 TRUSTGO 렌탈 픽업 (예약번호 S567J7). 국제운전면허증 필수!',
+ {id:'s1',d:1,n:1,icon:'?�️',name:'?�하 공항 & ?�트�??�업',jp:'?�覇空港 T1 · TRUSTGO ?�ン?�カ??,lat:26.1961,lng:127.6460,from:null,min:null,km:null,img:'https://images.unsplash.com/photo-1540339832862-4745ea98d2b2?w=400&q=80',
+  note:'12:05 ?�착 ???�국?�속 ??12:30 TRUSTGO ?�탈 ?�업 (?�약번호 S567J7). �?��?�전면허�??�수!',
   gmaps:'https://www.google.com/maps/search/?api=1&query=26.1961,127.646',
-  food:[{e:'🍙',n:'ポーたま 공항점',t:'주먹밥',d:'차량 픽업 전 간단히!'},{e:'🍜',n:'空港食堂',t:'오키나와 소바',d:'공항 1층 가성비 맛집'}]},
- {id:'s3',d:1,n:2,icon:'🍼',name:'파르코 시티 (아가짱 혼포)',jp:'PARCO CITY · アカチャンホンポ',lat:26.2642,lng:127.6975,from:'렌트카 픽업',min:20,km:12,img:'https://upload.wikimedia.org/wikipedia/commons/6/65/SAN-A_URASOE_WEST_COAST_PARCO_CITY.jpg',
-  note:'오키나와 아기용품 쇼핑 성지 1순위! 나고로 올라가는 길에 위치해 동선이 완벽합니다. 이곳 푸드코트에서 바다를 보며 늦은 점심을 드세요!',
+  food:[{e:'?��',n:'?�ー?�ま 공항??,t:'주먹�?,d:'차량 ?�업 ??간단??'},{e:'?��',n:'空港食堂',t:'?�키?��? ?�바',d:'공항 1�?가?�비 맛집'}]},
+ {id:'s3',d:1,n:2,icon:'?��',name:'?�르�??�티 (?��?�??�포)',jp:'PARCO CITY · ?�カ?�ャ?�ホ?�ポ',lat:26.2642,lng:127.6975,from:'?�트�??�업',min:20,km:12,img:'https://images.unsplash.com/photo-1519222970733-f546218fa6d7?w=400&q=80',
+  note:'?�키?��? ?�기?�품 ?�핑 ?��? 1?�위! ?�고�??�라가??길에 ?�치???�선???�벽?�니?? ?�곳 ?�드코트?�서 바다�?보며 ??? ?�심???�세??',
   gmaps:'https://www.google.com/maps/search/?api=1&query=PARCO+CITY+Okinawa',
-  food:[{e:'🍜',n:'오션뷰 푸드코트',t:'다양한 메뉴',d:'원하는 메뉴를 각자 골라먹기 좋습니다'},{e:'🍦',n:'Blue Seal',t:'아이스크림',d:'쇼핑 중 당 충전!'}]},
- {id:'s4',d:1,n:3,icon:'🏨',name:'오리엔탈 리조트 체크인',jp:'オリエンタルホテル沖縄',lat:26.5290,lng:127.9350,from:'파르코 시티',min:60,km:55,img:'https://upload.wikimedia.org/wikipedia/commons/c/ce/Okinawa_Marriott_Resort_%26_Spa_01.jpg',
-  note:'고속도로 이용 나고시로 이동. 체크인 후 리조트 수영장 및 휴식.',
+  food:[{e:'?��',n:'?�션�??�드코트',t:'?�양??메뉴',d:'?�하??메뉴�?각자 골라먹기 좋습?�다'},{e:'?��',n:'Blue Seal',t:'?�이?�크�?,d:'?�핑 �???충전!'}]},
+ {id:'s4',d:1,n:3,icon:'?��',name:'?�리?�탈 리조??체크??,jp:'?�リ?�ン?�ル?�テ?�沖�?,lat:26.5290,lng:127.9350,from:'?�르�??�티',min:60,km:55,img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80',
+  note:'고속?�로 ?�용 ?�고?�로 ?�동. 체크????리조???�영??�??�식.',
   gmaps:'https://www.google.com/maps/search/?api=1&query=Oriental+Hotel+Okinawa+Resort+Nago',
-  food:[{e:'🍣',n:'なごすし',t:'스시',d:'차로 10분 거리 신선한 초밥'}]},
- {id:'s2',d:1,n:4,icon:'🛒',name:'[야간 선택] 나고 메가 돈키호테',jp:'MEGA ドン・キホーテ 名護店',lat:26.5888,lng:127.9866,from:'오리엔탈 리조트',min:15,km:10,img:'https://upload.wikimedia.org/wikipedia/commons/5/52/MEGA_Don_Quijote_Nago_20210207.jpg',
-  note:'숙소 근처 새벽까지 영업하는 초대형 돈키호테! 첫날 저녁 식사 후 가볍게 야간 쇼핑을 즐겨보세요.',
+  food:[{e:'?��',n:'?�ご?�し',t:'?�시',d:'차로 10�?거리 ?�선??초밥'}]},
+ {id:'s2',d:1,n:4,icon:'?��',name:'[?�간 ?�택] ?�고 메�? ?�키?�테',jp:'MEGA ?�ン?�キ?�ー???��?�?,lat:26.5888,lng:127.9866,from:'?�리?�탈 리조??,min:15,km:10,img:'https://images.unsplash.com/photo-1555529771-835f59bfc50c?w=400&q=80',
+  note:'?�소 근처 ?�벽까�? ?�업?�는 초�????�키?�테! 첫날 ?�???�사 ??가볍게 ?�간 ?�핑??즐겨보세??',
   gmaps:'https://www.google.com/maps/search/?api=1&query=MEGA+Don+Quijote+Nago',
-  food:[{e:'🍻',n:'주변 이자카야',t:'야식',d:'나고 시내에서 맥주 한잔!'}]},
- {id:'s5',d:2,n:1,icon:'🎟️',name:'쿄다 휴게소 (할인티켓 구매)',jp:'道の駅 許田',lat:26.5458,lng:127.9620,from:'오리엔탈 리조트',min:5,km:4,img:'https://upload.wikimedia.org/wikipedia/commons/4/4c/Michinoeki_Kyoda_202108_01.jpg',
-  note:'추라우미 수족관 가기 전 필수 코스! 오키나와 최저가로 수족관 티켓을 구매할 수 있습니다. 덤으로 쿄다 명물 튀김(텐푸라)도 맛보세요.',
+  food:[{e:'?��',n:'주�? ?�자카야',t:'?�식',d:'?�고 ?�내?�서 맥주 ?�잔!'}]},
+ {id:'s5',d:2,n:1,icon:'?���?,name:'쿄다 ?�게??(?�인?�켓 구매)',jp:'?�の�?許田',lat:26.5458,lng:127.9620,from:'?�리?�탈 리조??,min:5,km:4,img:'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=400&q=80',
+  note:'추라?��? ?�족관 가�????�수 코스! ?�키?��? 최�?가�??�족관 ?�켓??구매?????�습?�다. ?�으�?쿄다 명물 ?�김(?�푸????맛보?�요.',
   gmaps:'https://www.google.com/maps/search/?api=1&query=Michi-no-Eki+Kyoda',
-  food:[{e:'🍤',n:'쿄다 텐푸라',t:'간식',d:'휴게소 명물 야채/오징어 튀김!'},{e:'🥩',n:'소고기 꼬치',t:'간식',d:'야외 매대에서 파는 고소한 꼬치'}]},
- {id:'s6',d:2,n:2,icon:'🐠',name:'추라우미 수족관',jp:'美ら海水族館',lat:26.6938,lng:127.8783,from:'쿄다 휴게소',min:35,km:22,img:'https://upload.wikimedia.org/wikipedia/commons/9/91/Okinawa_Churaumi_Aquarium.jpg',
-  note:'오전 방문 추천. 거대한 고래상어와 쥐가오리 관람 (약 2~3시간 소요).',
-  gmaps:'https://www.google.com/maps/place/美ら海水族館/@26.6938,127.8783,15z',
-  food:[{e:'🍜',n:'岸本食堂',t:'전통 소바',d:'100년 전통 오키나와 소바'}]},
- {id:'s7',d:2,n:3,icon:'🌴',name:'비세 후쿠기 가로수길',jp:'備瀬のフクギ並木',lat:26.7035,lng:127.8801,from:'추라우미 수족관',min:5,km:2,img:'https://upload.wikimedia.org/wikipedia/commons/1/18/Bise_Fukugi_Namiki_01.jpg',
-  note:'수족관 바로 옆. 힐링 산책 및 자전거 대여 가능. 아름다운 옛 오키나와 풍경.',
+  food:[{e:'?��',n:'쿄다 ?�푸??,t:'간식',d:'?�게??명물 ?�채/?�징???�김!'},{e:'?��',n:'?�고�?꼬치',t:'간식',d:'?�외 매�??�서 ?�는 고소??꼬치'}]},
+ {id:'s6',d:2,n:2,icon:'?��',name:'추라?��? ?�족관',jp:'美ら海水?�館',lat:26.6938,lng:127.8783,from:'쿄다 ?�게??,min:35,km:22,img:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80',
+  note:'?�전 방문 추천. 거�???고래?�어?� 쥐�??�리 관??(??2~3?�간 ?�요).',
+  gmaps:'https://www.google.com/maps/place/美ら海水?�館/@26.6938,127.8783,15z',
+  food:[{e:'?��',n:'岸本食堂',t:'?�통 ?�바',d:'100???�통 ?�키?��? ?�바'}]},
+ {id:'s7',d:2,n:3,icon:'?��',name:'비세 ?�쿠�?가로수�?,jp:'?�瀬の?�ク??��??,lat:26.7035,lng:127.8801,from:'추라?��? ?�족관',min:5,km:2,img:'https://images.unsplash.com/photo-1502085671122-2d218cd434e6?w=400&q=80',
+  note:'?�족관 바로 ?? ?�링 ?�책 �??�전�??�??가?? ?�름?�운 ???�키?��? ?�경.',
   gmaps:'https://www.google.com/maps/search/?api=1&query=26.7035,127.8801',
-  food:[{e:'☕',n:'Ulu Cafe',t:'바다 뷰 카페',d:'가로수길 끝 바다가 보이는 카페'}]},
- {id:'s8',d:2,n:4,icon:'🍍',name:'[오후 선택 1] 나고 파인애플 파크',jp:'ナゴパイナップルパーク',lat:26.6186,lng:127.9557,from:'비세 후쿠기',min:30,km:20,img:'https://upload.wikimedia.org/wikipedia/commons/d/d7/Nago_Pineapple_Park_03.jpg',
-  note:'임산부/아기 추천 1순위! 무인 자동 카트를 타고 열대 숲을 편안하게 관람합니다. 걷는 구간이 거의 없습니다.',
+  food:[{e:'??,n:'Ulu Cafe',t:'바다 �?카페',d:'가로수�???바다가 보이??카페'}]},
+ {id:'s8',d:2,n:4,icon:'?��',name:'[?�후 ?�택 1] ?�고 ?�인?�플 ?�크',jp:'?�ゴ?�イ?�ッ?�ル?�ー??,lat:26.6186,lng:127.9557,from:'비세 ?�쿠�?,min:30,km:20,img:'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=400&q=80',
+  note:'?�산부/?�기 추천 1?�위! 무인 ?�동 카트�??��??��? ?�을 ?�안?�게 관?�합?�다. 걷는 구간??거의 ?�습?�다.',
   gmaps:'https://www.google.com/maps/search/?api=1&query=Nago+Pineapple+Park',
-  food:[{e:'🍦',n:'파인애플 아이스크림',t:'간식',d:'새콤달콤 아이스크림 필수!'}]},
- {id:'s9',d:2,n:5,icon:'🚤',name:'[오후 선택 2] 부세나 해중공원',jp:'ブセナ海中公園',lat:26.5385,lng:127.9288,from:'파인애플 파크',min:25,km:15,img:'https://upload.wikimedia.org/wikipedia/commons/b/bc/Busena_Resort05bs3200.jpg',
-  note:'옷이 젖지 않고 바닥이 투명한 글라스 보트를 타고 바닷속 열대어를 구경합니다. 숙소에서 차로 5분!',
+  food:[{e:'?��',n:'?�인?�플 ?�이?�크�?,t:'간식',d:'?�콤?�콤 ?�이?�크�??�수!'}]},
+ {id:'s9',d:2,n:5,icon:'?��',name:'[?�후 ?�택 2] 부?�나 ?�중공원',jp:'?�セ?�海�?��??,lat:26.5385,lng:127.9288,from:'?�인?�플 ?�크',min:25,km:15,img:'https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?w=400&q=80',
+  note:'?�이 ?��? ?�고 바닥???�명??글?�스 보트�??��?바닷???��??��? 구경?�니?? ?�소?�서 차로 5�?',
   gmaps:'https://www.google.com/maps/search/?api=1&query=Busena+Marine+Park',
   food:[]},
- {id:'s10',d:2,n:6,icon:'🛒',name:'나고 메가 돈키호테 & 니시마츠야',jp:'MEGA ドン・キホーテ 名護店',lat:26.5888,lng:127.9866,from:'부세나/숙소',min:15,km:10,img:'https://upload.wikimedia.org/wikipedia/commons/5/52/MEGA_Don_Quijote_Nago_20210207.jpg',
-  note:'숙소 근처 야간 쇼핑! 메가 돈키호테(새벽까지 영업) & 니시마츠야(가성비 아기옷)가 붙어있습니다.',
+ {id:'s10',d:2,n:6,icon:'?��',name:'?�고 메�? ?�키?�테 & ?�시마츠??,jp:'MEGA ?�ン?�キ?�ー???��?�?,lat:26.5888,lng:127.9866,from:'부?�나/?�소',min:15,km:10,img:'https://images.unsplash.com/photo-1555529771-835f59bfc50c?w=400&q=80',
+  note:'?�소 근처 ?�간 ?�핑! 메�? ?�키?�테(?�벽까�? ?�업) & ?�시마츠??가?�비 ?�기??가 붙어?�습?�다.',
   gmaps:'https://www.google.com/maps/search/?api=1&query=MEGA+Don+Quijote+Nago',
-  food:[{e:'🍻',n:'주변 이자카야',t:'야식',d:'나고 시내에서 맥주 한잔!'}]},
- {id:'s10b',d:2,n:7,icon:'🏨',name:'오리엔탈 리조트 복귀',jp:'オリエンタルホテル沖縄',lat:26.5290,lng:127.9350,from:'메가 돈키호테',min:15,km:10,img:'https://upload.wikimedia.org/wikipedia/commons/c/ce/Okinawa_Marriott_Resort_%26_Spa_01.jpg',
-  note:'2일차 북부 일정을 모두 마치고 숙소로 복귀하여 편안하게 휴식합니다.',
+  food:[{e:'?��',n:'주�? ?�자카야',t:'?�식',d:'?�고 ?�내?�서 맥주 ?�잔!'}]},
+ {id:'s10b',d:2,n:7,icon:'?��',name:'?�리?�탈 리조??복�?',jp:'?�リ?�ン?�ル?�テ?�沖�?,lat:26.5290,lng:127.9350,from:'메�? ?�키?�테',min:15,km:10,img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80',
+  note:'2?�차 북�? ?�정??모두 마치�??�소�?복�??�여 ?�안?�게 ?�식?�니??',
   gmaps:'https://www.google.com/maps/search/?api=1&query=Oriental+Hotel+Okinawa+Resort+Nago',
   food:[]},
- {id:'s11',d:3,n:1,icon:'🏖️',name:'오전 리조트 수영장 & 비치 휴식',jp:'オリエンタルホテル沖縄',lat:26.5290,lng:127.9350,from:'객실',min:0,km:0,img:'https://upload.wikimedia.org/wikipedia/commons/c/ce/Okinawa_Marriott_Resort_%26_Spa_01.jpg',
-  note:'오전에는 무리하지 않고 리조트 내 수영장이나 버기로 이동 가능한 프라이빗 해변(카리유시 비치)에서 여유롭게 휴식하세요!',
+ {id:'s11',d:3,n:1,icon:'?���?,name:'?�전 리조???�영??& 비치 ?�식',jp:'?�リ?�ン?�ル?�テ?�沖�?,lat:26.5290,lng:127.9350,from:'객실',min:0,km:0,img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80',
+  note:'?�전?�는 무리?��? ?�고 리조?????�영?�이??버기�??�동 가?�한 ?�라?�빗 ?��?(카리?�시 비치)?�서 ?�유�?�� ?�식?�세??',
   gmaps:'https://www.google.com/maps/search/?api=1&query=Oriental+Hotel+Okinawa',
-  food:[{e:'🥐',n:'조식 뷔페',t:'호텔 식사',d:'오리엔탈 리조트의 맛있는 조식'}]},
- {id:'s12',d:3,n:2,icon:'🥩',name:'스테이크하우스 88 챠탄점',jp:'ステーキハウス88 北谷店',lat:26.3156,lng:127.7567,from:'리조트 (나고시)',min:50,km:35,img:'https://upload.wikimedia.org/wikipedia/commons/3/30/Steak_house_88.jpg',
-  note:'오전 휴식 후, 점심으로 오키나와 여행 필수 코스인 아메리칸 스타일 정통 스테이크를 드시러 출발합니다!',
+  food:[{e:'?��',n:'조식 뷔페',t:'?�텔 ?�사',d:'?�리?�탈 리조?�의 맛있??조식'}]},
+ {id:'s12',d:3,n:2,icon:'?��',name:'?�테?�크?�우??88 챠탄??,jp:'?�テ?�キ?�ウ??8 ?�谷�?,lat:26.3156,lng:127.7567,from:'리조??(?�고??',min:50,km:35,img:'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&q=80',
+  note:'?�전 ?�식 ?? ?�심?�로 ?�키?��? ?�행 ?�수 코스???�메리칸 ?��????�통 ?�테?�크�??�시??출발?�니??',
   gmaps:'https://www.google.com/maps/search/?api=1&query=Steakhouse+88+Chatan',
-  food:[{e:'🔥',n:'텐더로인 스테이크',t:'시그니처',d:'가장 부드러운 안심!'},{e:'🥩',n:'특선 와규',t:'프리미엄',d:'입에서 살살 녹는 일본 와규'}]},
- {id:'s13',d:3,n:3,icon:'🌮',name:'아메리칸 빌리지',jp:'アメリカンビレッジ',lat:26.3166,lng:127.7576,from:'스테이크하우스 88',min:5,km:1,img:'https://upload.wikimedia.org/wikipedia/commons/0/09/Mihama_AV_D_Japan.jpg',
-  note:'미국 서해안 분위기의 이국적인 쇼핑 단지. 맛있는 스테이크로 배를 채운 후 산책하며 구경하기 완벽합니다.',
+  food:[{e:'?��',n:'?�더로인 ?�테?�크',t:'?�그?�처',d:'가??부?�러???�심!'},{e:'?��',n:'?�선 ?��?,t:'?�리미엄',d:'?�에???�살 ?�는 ?�본 ?��?}]},
+ {id:'s13',d:3,n:3,icon:'?��',name:'?�메리칸 빌리지',jp:'?�メ?�カ?�ビ?�ッ??,lat:26.3166,lng:127.7576,from:'?�테?�크?�우??88',min:5,km:1,img:'https://images.unsplash.com/photo-1513681461972-e0c6607bd629?w=400&q=80',
+  note:'미국 ?�해??분위기의 ?�국?�인 ?�핑 ?��?. 맛있???�테?�크�?배�? 채운 ???�책?�며 구경?�기 ?�벽?�니??',
   gmaps:'https://www.google.com/maps/place/American+Village/@26.3166,127.7576,15z',
-  food:[{e:'☕',n:'지바고 커피',t:'오션뷰',d:'바다를 보며 마시는 여유로운 커피'}]},
- {id:'s14',d:3,n:4,icon:'🍼',name:'이온몰 라이카무 (베비저러스 & 몽벨)',jp:'イオンモール沖縄ライカム',lat:26.3146,lng:127.7963,from:'아메리칸 빌리지',min:15,km:6,img:'https://upload.wikimedia.org/wikipedia/commons/e/e1/AEON_Mall_Okinawa_Rycom_01.JPG',
-  note:'오키나와 최대 규모 쇼핑몰! 베비저러스(아기용품), 오키나와 유일의 몽벨(Montbell) 매장(2층), 포켓몬센터 등 모든 쇼핑 가능.',
+  food:[{e:'??,n:'지바고 커피',t:'?�션�?,d:'바다�?보며 마시???�유로운 커피'}]},
+ {id:'s14',d:3,n:4,icon:'?��',name:'?�온�??�이카무 (베비?�?�스 & 몽벨)',jp:'?�オ?�モ?�ル沖縄?�イ?�ム',lat:26.3146,lng:127.7963,from:'?�메리칸 빌리지',min:15,km:6,img:'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=80',
+  note:'?�키?��? 최�? 규모 ?�핑�? 베비?�?�스(?�기?�품), ?�키?��? ?�일??몽벨(Montbell) 매장(2�?, ?�켓몬센????모든 ?�핑 가??',
   gmaps:'https://www.google.com/maps/search/?api=1&query=Aeon+Mall+Okinawa+Rycom',
-  food:[{e:'🍣',n:'무텐쿠라스시',t:'회전초밥',d:'이온몰 내 인기 만점 100엔스시'}]},
- {id:'s14b',d:3,n:5,icon:'🏨',name:'오리엔탈 리조트 복귀',jp:'オリエンタルホテル沖縄',lat:26.5290,lng:127.9350,from:'이온몰 라이카무',min:55,km:45,img:'https://upload.wikimedia.org/wikipedia/commons/c/ce/Okinawa_Marriott_Resort_%26_Spa_01.jpg',
-  note:'3일차 쇼핑 일정을 모두 마치고 숙소로 복귀하여 오키나와에서의 마지막 밤을 보냅니다.',
+  food:[{e:'?��',n:'무텐쿠라?�시',t:'?�전초밥',d:'?�온�????�기 만점 100?�스??}]},
+ {id:'s14b',d:3,n:5,icon:'?��',name:'?�리?�탈 리조??복�?',jp:'?�リ?�ン?�ル?�テ?�沖�?,lat:26.5290,lng:127.9350,from:'?�온�??�이카무',min:55,km:45,img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80',
+  note:'3?�차 ?�핑 ?�정??모두 마치�??�소�?복�??�여 ?�키?��??�서??마�?�?밤을 보냅?�다.',
   gmaps:'https://www.google.com/maps/search/?api=1&query=Oriental+Hotel+Okinawa+Resort+Nago',
   food:[]},
- {id:'s15',d:4,n:1,icon:'🍔',name:'A&W 마키미나토점 (햄버거 픽업)',jp:'A&W 牧港店',lat:26.2652,lng:127.7158,from:'오리엔탈 리조트',min:50,km:45,img:'https://upload.wikimedia.org/wikipedia/commons/7/77/A%26W_Makiminato.jpg',
-  note:'오키나와의 명물 A&W 버거! 가장 유명한 레트로 미국식 드라이브인 매장입니다. 여기서 햄버거와 루트비어를 포장(픽업)해서 차 안이나 공항에서 드세요.',
+ {id:'s15',d:4,n:1,icon:'?��',name:'A&W 마키미나?�점 (?�버�??�업)',jp:'A&W ?�港�?,lat:26.2652,lng:127.7158,from:'?�리?�탈 리조??,min:50,km:45,img:'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&q=80',
+  note:'?�키?��???명물 A&W 버거! 가???�명???�트�?미국???�라?�브??매장?�니?? ?�기???�버거�? 루트비어�??�장(?�업)?�서 �??�이??공항?�서 ?�세??',
   gmaps:'https://www.google.com/maps/search/?api=1&query=A%26W+Makiminato',
-  food:[{e:'🍔',n:'모짜버거',t:'베스트셀러',d:'풍성한 야채와 모짜렐라 치즈의 조합!'},{e:'🥤',n:'루트비어',t:'명물',d:'물파스 맛(?)으로 유명한 A&W 상징 음료'}]},
- {id:'s15b',d:4,n:2,icon:'⛽',name:'렌트카 반납 전 주유소',jp:'ガソリンスタンド (満タン)',lat:26.1840,lng:127.6540,from:'A&W 마키미나토점',min:25,km:13,img:'https://images.unsplash.com/photo-1541887309995-17154fbdbb9a?w=400&q=80',
-  note:'렌트카 반납 전 필수로 거쳐야 하는 코스입니다! "만탄(가득) 레귤러(일반 휘발유)"라고 말씀하시거나 카드로 셀프 주유하신 뒤 영수증을 꼭 챙겨주세요.',
+  food:[{e:'?��',n:'모짜버거',t:'베스?��???,d:'?�성???�채?� 모짜?�라 치즈??조합!'},{e:'?��',n:'루트비어',t:'명물',d:'물파??�??)?�로 ?�명??A&W ?�징 ?�료'}]},
+ {id:'s15b',d:4,n:2,icon:'??,name:'?�트�?반납 ??주유??,jp:'?�ソ?�ン?�タ?�ド (満?�ン)',lat:26.1840,lng:127.6540,from:'A&W 마키미나?�점',min:25,km:13,img:'https://images.unsplash.com/photo-1541887309995-17154fbdbb9a?w=400&q=80',
+  note:'?�트�?반납 ???�수�?거쳐???�는 코스?�니?? "만탄(가?? ?�귤???�반 ?�발??"?�고 말�??�시거나 카드�??�??주유?�신 ???�수증을 �?챙겨주세??',
   gmaps:'https://www.google.com/maps/search/?api=1&query=Gas+Station+near+TRUSTGO+Okinawa',
   food:[]},
- {id:'s16',d:4,n:3,icon:'🚗',name:'렌트카 반납 (TRUSTGO)',jp:'TRUSTGO レンタカー 11:00',lat:26.1800,lng:127.6500,from:'주유소',min:5,km:1,img:'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=400&q=80',
-  note:'⚠️ 11:00까지 렌트카 반납 필수! A&W 들르고 주유하는 시간 감안하여 리조트에서 늦어도 8시 40분에는 출발하세요.',
+ {id:'s16',d:4,n:3,icon:'?��',name:'?�트�?반납 (TRUSTGO)',jp:'TRUSTGO ?�ン?�カ??11:00',lat:26.1800,lng:127.6500,from:'주유??,min:5,km:1,img:'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=400&q=80',
+  note:'?�️ 11:00까�? ?�트�?반납 ?�수! A&W ?�르�?주유?�는 ?�간 감안?�여 리조?�에????��??8??40분에??출발?�세??',
   gmaps:'https://www.google.com/maps/search/?api=1&query=TRUSTGO+Rentacar+Okinawa',
   food:[]},
- {id:'s17',d:4,n:4,icon:'✈️',name:'나하 공항 & 귀국',jp:'那覇空港 T1 · LJ0342',lat:26.1955,lng:127.6455,from:'렌트카 반납',min:10,km:5,img:'https://upload.wikimedia.org/wikipedia/commons/e/ec/Naha_Airport13s3s4410.jpg',
-  note:'13:15 진에어 탑승. 남는 시간에 아까 픽업한 햄버거를 드시거나 면세점 쇼핑을 즐기세요!',
+ {id:'s17',d:4,n:4,icon:'?�️',name:'?�하 공항 & 귀�?,jp:'?�覇空港 T1 · LJ0342',lat:26.1955,lng:127.6455,from:'?�트�?반납',min:10,km:5,img:'https://images.unsplash.com/photo-1540339832862-4745ea98d2b2?w=400&q=80',
+  note:'13:15 진에???�승. ?�는 ?�간???�까 ?�업???�버거�? ?�시거나 면세???�핑??즐기?�요!',
   gmaps:'https://www.google.com/maps/place/Naha+Airport/@26.1955,127.6455,15z',
-  food:[{e:'🍠',n:'베니이모 타르트',t:'기념품',d:'출국 전 면세점에서 꼭 사야할 간식!'}]}
+  food:[{e:'?��',n:'베니?�모 ?�르트',t:'기념??,d:'출국 ??면세?�에??�??�야??간식!'}]}
 ];
 
 // Route waypoints connecting spots directly
@@ -288,12 +288,12 @@ SPOTS.forEach(s=>{
 
   // Popup
   const h=Math.floor((s.min||0)/60),m=(s.min||0)%60;
-  const ts=s.min?(h>0?`${h}시간 ${m}분`:`약 ${m}분`):null;
-  const drH=s.from?`<div class="pc-dr"><div class="pc-dh">🚐 이전 장소에서 이동</div>
-    <div style="font-size:11.5px;color:#e2e8f0;margin-bottom:3px">📍 ${s.from}</div>
-    <div style="font-size:14px;font-weight:800;color:#38bdf8">⏱ ${ts} · ${s.km}km</div></div>`:
+  const ts=s.min?(h>0?`${h}?�간 ${m}�?:`??${m}�?):null;
+  const drH=s.from?`<div class="pc-dr"><div class="pc-dh">?�� ?�전 ?�소?�서 ?�동</div>
+    <div style="font-size:11.5px;color:#e2e8f0;margin-bottom:3px">?�� ${s.from}</div>
+    <div style="font-size:14px;font-weight:800;color:#38bdf8">??${ts} · ${s.km}km</div></div>`:
     `<div class="pc-dr" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.3)">
-    <div style="font-size:12px;color:#fcd34d;font-weight:700">🚩 출발점 · TRUSTGO 렌트카 픽업 (12:30)</div></div>`;
+    <div style="font-size:12px;color:#fcd34d;font-weight:700">?�� 출발??· TRUSTGO ?�트�??�업 (12:30)</div></div>`;
   const foodH=s.food.slice(0,2).map(f=>`<div class="pc-fc">
     <span class="pc-fe">${f.e}</span>
     <div><div class="pc-fn">${f.n}</div><span class="pc-ft">${f.t}</span><div class="pc-fd">${f.d}</div></div>
@@ -305,9 +305,9 @@ SPOTS.forEach(s=>{
     ${s.img ? `<img src="${s.img}" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin:10px 0;border:1px solid rgba(255,255,255,.1)">` : ''}
     ${drH}
     <div class="pc-note">${s.note}</div>
-    <div class="pc-fh">🍽️ 주변 추천 맛집</div>
+    <div class="pc-fh">?���?주�? 추천 맛집</div>
     ${foodH}
-    <a href="${s.gmaps}" target="_blank" class="pc-gmb">🗺️ 구글맵에서 열기</a>
+    <a href="${s.gmaps}" target="_blank" class="pc-gmb">?���?구�?맵에???�기</a>
   </div>`,{maxWidth:290,minWidth:248,autoPan:true});
 
   marker.on('click',()=>{
@@ -323,19 +323,19 @@ function showPanel(s){
   ib.style.display='block';
   const col=COL[s.d];
   const h=Math.floor((s.min||0)/60),m=(s.min||0)%60;
-  const ts=s.min?(h>0?`${h}시간 ${m}분`:`약 ${m}분`):null;
-  const drH=s.from?`<div class="dc"><div class="dc-h">🚐 이전 장소에서 이동</div>
-    <div class="dr"><span class="dl">📍 출발</span><span class="dv">${s.from}</span></div>
-    <div class="dr"><span class="dl">⏱ 소요</span><span class="dv" style="color:#38bdf8">${ts}</span></div>
-    <div class="dr"><span class="dl">🗺 거리</span><span class="dv">${s.km} km</span></div></div>`:
-    `<div class="dc" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.3)"><div style="font-size:12px;color:#fcd34d;font-weight:700">🚩 여행 출발점 · 나하공항 TRUSTGO 렌트카 픽업</div></div>`;
+  const ts=s.min?(h>0?`${h}?�간 ${m}�?:`??${m}�?):null;
+  const drH=s.from?`<div class="dc"><div class="dc-h">?�� ?�전 ?�소?�서 ?�동</div>
+    <div class="dr"><span class="dl">?�� 출발</span><span class="dv">${s.from}</span></div>
+    <div class="dr"><span class="dl">???�요</span><span class="dv" style="color:#38bdf8">${ts}</span></div>
+    <div class="dr"><span class="dl">?�� 거리</span><span class="dv">${s.km} km</span></div></div>`:
+    `<div class="dc" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.3)"><div style="font-size:12px;color:#fcd34d;font-weight:700">?�� ?�행 출발??· ?�하공항 TRUSTGO ?�트�??�업</div></div>`;
   const fH=s.food.map(f=>`<div class="fcard"><div class="fc-t"><span class="fce">${f.e}</span><div><div class="fcn">${f.n}</div><span class="fct">${f.t}</span></div></div><div class="fcd">${f.d}</div></div>`).join('');
   ib.innerHTML=`<span class="ibadge" style="background:${col}18;border-color:${col}55;color:${col}">${s.icon} ${DL[s.d]}</span>
     <div class="iname">${s.name}</div><div class="ijp">${s.jp}</div>
     ${s.img ? `<img src="${s.img}" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin:12px 0;border:1px solid rgba(255,255,255,.05)">` : ''}
     ${drH}<div class="inote">${s.note}</div>
-    <div class="fh">🍽️ 주변 추천 맛집</div>${fH}
-    <a href="${s.gmaps}" target="_blank" class="gmaps-btn">🗺️ 구글맵에서 열기</a>`;
+    <div class="fh">?���?주�? 추천 맛집</div>${fH}
+    <a href="${s.gmaps}" target="_blank" class="gmaps-btn">?���?구�?맵에???�기</a>`;
 }
 
 function fd(btn,day){
@@ -369,11 +369,11 @@ const LC=L.Control.extend({
   onAdd(){
     const d=L.DomUtil.create('div', 'mobile-hide');
     d.innerHTML=`<div class="leg" style="font-size:10.5px;min-width:158px">
-      <div class="leg-h">일별 이동 경로</div>
-      <div class="leg-r"><span class="leg-d" style="background:#f59e0b;box-shadow:0 0 5px #f59e0b50"></span>DAY1 도착 &amp; 북부</div>
-      <div class="leg-r"><span class="leg-d" style="background:#38bdf8;box-shadow:0 0 5px #38bdf850"></span>DAY2 중부 액티비티</div>
-      <div class="leg-r"><span class="leg-d" style="background:#a78bfa;box-shadow:0 0 5px #a78bfa50"></span>DAY3 남부 &amp; 나하</div>
-      <div class="leg-r"><span class="leg-d" style="background:#34d399;box-shadow:0 0 5px #34d39950"></span>DAY4 쇼핑 &amp; 귀국</div>
+      <div class="leg-h">?�별 ?�동 경로</div>
+      <div class="leg-r"><span class="leg-d" style="background:#f59e0b;box-shadow:0 0 5px #f59e0b50"></span>DAY1 ?�착 &amp; 북�?</div>
+      <div class="leg-r"><span class="leg-d" style="background:#38bdf8;box-shadow:0 0 5px #38bdf850"></span>DAY2 중�? ?�티비티</div>
+      <div class="leg-r"><span class="leg-d" style="background:#a78bfa;box-shadow:0 0 5px #a78bfa50"></span>DAY3 ?��? &amp; ?�하</div>
+      <div class="leg-r"><span class="leg-d" style="background:#34d399;box-shadow:0 0 5px #34d39950"></span>DAY4 ?�핑 &amp; 귀�?/div>
     </div>`;
     L.DomEvent.disableClickPropagation(d);return d;
   }
