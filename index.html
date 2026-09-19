@@ -99,6 +99,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   .hdr{flex-direction:column;align-items:flex-start;padding:12px}
   .hdr-bs{margin-left:0;margin-top:8px}
   .leaflet-popup-content{min-width:230px!important}
+  .mobile-hide{display:none!important}
 }
 </style>
 </head>
@@ -362,7 +363,7 @@ function fd(btn,day){
 const LC=L.Control.extend({
   options:{position:'bottomleft'},
   onAdd(){
-    const d=L.DomUtil.create('div');
+    const d=L.DomUtil.create('div', 'mobile-hide');
     d.innerHTML=`<div class="leg" style="font-size:10.5px;min-width:158px">
       <div class="leg-h">일별 이동 경로</div>
       <div class="leg-r"><span class="leg-d" style="background:#f59e0b;box-shadow:0 0 5px #f59e0b50"></span>DAY1 도착 &amp; 북부</div>
