@@ -243,11 +243,15 @@ const SPOTS=[
   note:'오키나와의 명물 A&W 버거! 가장 유명한 레트로 미국식 드라이브인 매장입니다. 여기서 햄버거와 루트비어를 포장(픽업)해서 차 안이나 공항에서 드세요.',
   gmaps:'https://www.google.com/maps/search/?api=1&query=A%26W+Makiminato',
   food:[{e:'🍔',n:'모짜버거',t:'베스트셀러',d:'풍성한 야채와 모짜렐라 치즈의 조합!'},{e:'🥤',n:'루트비어',t:'명물',d:'물파스 맛(?)으로 유명한 A&W 상징 음료'}]},
- {id:'s16',d:4,n:2,icon:'🚗',name:'렌트카 반납 (TRUSTGO)',jp:'TRUSTGO レンタカー 11:00',lat:26.1800,lng:127.6500,from:'A&W 마키미나토점',min:25,km:14,img:'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=400&q=80',
-  note:'⚠️ 11:00까지 렌트카 반납 필수! A&W 들르는 시간 감안하여 리조트에서 늦어도 8시 40분에는 출발하세요. (주유 가득 채워서 반납)',
+ {id:'s15b',d:4,n:2,icon:'⛽',name:'렌트카 반납 전 주유소',jp:'ガソリンスタンド (満タン)',lat:26.1840,lng:127.6540,from:'A&W 마키미나토점',min:25,km:13,img:'https://images.unsplash.com/photo-1541887309995-17154fbdbb9a?w=400&q=80',
+  note:'렌트카 반납 전 필수로 거쳐야 하는 코스입니다! "만탄(가득) 레귤러(일반 휘발유)"라고 말씀하시거나 카드로 셀프 주유하신 뒤 영수증을 꼭 챙겨주세요.',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Gas+Station+near+TRUSTGO+Okinawa',
+  food:[]},
+ {id:'s16',d:4,n:3,icon:'🚗',name:'렌트카 반납 (TRUSTGO)',jp:'TRUSTGO レンタカー 11:00',lat:26.1800,lng:127.6500,from:'주유소',min:5,km:1,img:'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=400&q=80',
+  note:'⚠️ 11:00까지 렌트카 반납 필수! A&W 들르고 주유하는 시간 감안하여 리조트에서 늦어도 8시 40분에는 출발하세요.',
   gmaps:'https://www.google.com/maps/search/?api=1&query=TRUSTGO+Rentacar+Okinawa',
   food:[]},
- {id:'s17',d:4,n:3,icon:'✈️',name:'나하 공항 & 귀국',jp:'那覇空港 T1 · LJ0342',lat:26.1955,lng:127.6455,from:'렌트카 반납',min:10,km:5,img:'https://upload.wikimedia.org/wikipedia/commons/e/ec/Naha_Airport13s3s4410.jpg',
+ {id:'s17',d:4,n:4,icon:'✈️',name:'나하 공항 & 귀국',jp:'那覇空港 T1 · LJ0342',lat:26.1955,lng:127.6455,from:'렌트카 반납',min:10,km:5,img:'https://upload.wikimedia.org/wikipedia/commons/e/ec/Naha_Airport13s3s4410.jpg',
   note:'13:15 진에어 탑승. 남는 시간에 아까 픽업한 햄버거를 드시거나 면세점 쇼핑을 즐기세요!',
   gmaps:'https://www.google.com/maps/place/Naha+Airport/@26.1955,127.6455,15z',
   food:[{e:'🍠',n:'베니이모 타르트',t:'기념품',d:'출국 전 면세점에서 꼭 사야할 간식!'}]}
@@ -258,7 +262,7 @@ const ROUTES=[
  {d:1,col:'#f59e0b',pts:[ [26.1961,127.6460], [26.2642,127.6975], [26.5290,127.9350], [26.5888,127.9866] ]},
  {d:2,col:'#38bdf8',pts:[ [26.5290,127.9350], [26.5458,127.9620], [26.6938,127.8783], [26.7035,127.8801], [26.6186,127.9557], [26.5385,127.9288], [26.5290,127.9350], [26.5888,127.9866], [26.5290,127.9350] ]},
  {d:3,col:'#a78bfa',pts:[ [26.5290,127.9350], [26.3156,127.7567], [26.3166,127.7576], [26.3146,127.7963], [26.5290,127.9350] ]},
- {d:4,col:'#34d399',pts:[ [26.5290,127.9350], [26.2652,127.7158], [26.1800,127.6500], [26.1955,127.6455] ]}
+ {d:4,col:'#34d399',pts:[ [26.5290,127.9350], [26.2652,127.7158], [26.1840,127.6540], [26.1800,127.6500], [26.1955,127.6455] ]}
 ];
 
 // Render routes
