@@ -101,6 +101,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   .leaflet-popup-content{min-width:230px!important}
   .mobile-hide{display:none!important}
 }
+.fab{position:fixed;bottom:20px;left:20px;background:#ec4899;color:white;border-radius:50px;padding:12px 20px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 4px 15px rgba(236,72,153,0.4);z-index:9999;display:flex;align-items:center;gap:8px;border:none}
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);backdrop-filter:blur(5px);z-index:10000;justify-content:center;align-items:center}
+.modal-content{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:20px;width:90%;max-width:400px;color:var(--text);box-shadow:0 10px 40px rgba(0,0,0,0.5)}
+.modal-title{font-size:18px;font-weight:800;margin-bottom:15px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:15px}
+.close-btn{background:none;border:none;color:#a1a1aa;font-size:20px;cursor:pointer;padding:0 5px}
+.doc-btn{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.05);padding:15px;border-radius:12px;margin-bottom:10px;text-decoration:none;color:white;border:1px solid rgba(255,255,255,0.1);transition:all 0.2s}
+.doc-btn:hover{background:rgba(255,255,255,0.1);border-color:#38bdf8}
+.doc-icon{font-size:24px}
+.doc-info{display:flex;flex-direction:column}
+.doc-name{font-weight:700;font-size:15px;margin-bottom:2px}
+.doc-sub{font-size:12px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -400,5 +411,45 @@ const LC=L.Control.extend({
 });
 new LC().addTo(map);
 </script>
+<button class="fab" onclick="document.getElementById('docModal').style.display='flex'">
+  📋 예약 서류
+</button>
+
+<div class="modal-overlay" id="docModal" onclick="if(event.target==this) this.style.display='none'">
+  <div class="modal-content">
+    <div class="modal-title">
+      📋 예약 서류 모음
+      <button class="close-btn" onclick="document.getElementById('docModal').style.display='none'">✖</button>
+    </div>
+    <a href="./docs/hotel_voucher.pdf" target="_blank" class="doc-btn">
+      <span class="doc-icon">🏨</span>
+      <div class="doc-info">
+        <span class="doc-name">오리엔탈 리조트 예약확인서</span>
+        <span class="doc-sub">숙소 체크인 시 제시</span>
+      </div>
+    </a>
+    <a href="./docs/rentacar_voucher.pdf" target="_blank" class="doc-btn">
+      <span class="doc-icon">🚗</span>
+      <div class="doc-info">
+        <span class="doc-name">렌터카 예약 바우처</span>
+        <span class="doc-sub">차량 픽업 시 제시</span>
+      </div>
+    </a>
+    <a href="./docs/rentacar_guide.pdf" target="_blank" class="doc-btn">
+      <span class="doc-icon">🗺️</span>
+      <div class="doc-info">
+        <span class="doc-name">인수 서류 및 렌터카 가이드</span>
+        <span class="doc-sub">오키나와 운전 주의사항 등</span>
+      </div>
+    </a>
+    <a href="./docs/receipt.pdf" target="_blank" class="doc-btn">
+      <span class="doc-icon">🧾</span>
+      <div class="doc-info">
+        <span class="doc-name">전자 영수증 (기타 증빙)</span>
+        <span class="doc-sub">결제 내역 증빙용</span>
+      </div>
+    </a>
+  </div>
+</div>
 </body>
 </html>
