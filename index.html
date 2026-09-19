@@ -92,7 +92,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .pc-fd{font-size:10.5px;color:rgba(148,163,184,.6);line-height:1.45;margin-top:3px}
 .pc-gmb{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:10px;padding:8px;background:rgba(66,133,244,.12);border:1px solid rgba(66,133,244,.28);border-radius:8px;color:#7eb3ff;font-size:11px;font-weight:700;text-decoration:none;transition:background .2s}
 .pc-gmb:hover{background:rgba(66,133,244,.22)}
-@media(max-width:800px){.main{flex-direction:column}.rpanel{width:100%;max-height:48vh;border-left:none;border-top:1px solid var(--border)}#map{min-height:50vh}}
+ @media(max-width:800px){
+  .main{flex-direction:column}
+  .rpanel{width:100%;height:48%;flex:none;border-left:none;border-top:1px solid var(--border)}
+  #map{height:52%;flex:none;min-height:0}
+  .hdr{flex-direction:column;align-items:flex-start;padding:12px}
+  .hdr-bs{margin-left:0;margin-top:8px}
+  .leaflet-popup-content{min-width:230px!important}
+}
 </style>
 </head>
 <body>
