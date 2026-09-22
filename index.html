@@ -9,8 +9,8 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--c1:#f59e0b;--c2:#38bdf8;--c3:#a78bfa;--c4:#34d399;--bg:#060e1f;--s1:#0a1628;--border:rgba(255,255,255,0.09);--text:#e2e8f0;--muted:rgba(148,163,184,0.65)}
 html,body{height:100%;overflow:hidden}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column}
-.hdr{background:linear-gradient(135deg,#060e1f,#0a1f3c);border-bottom:1px solid var(--border);padding:8px 16px;flex-shrink:0;display:flex;align-items:center;gap:10px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:#d8f0fc;color:var(--text);display:flex;flex-direction:column}
+.hdr{background:linear-gradient(135deg,#06213b,#0d4774);border-bottom:1px solid rgba(255,255,255,.22);padding:8px 16px;flex-shrink:0;display:flex;align-items:center;gap:10px}
 .hdr-t h1{font-size:.88rem;font-weight:800;color:#f0f9ff}
 .hdr-t p{font-size:10px;color:var(--muted);margin-top:1px}
 .hdr-bs{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
@@ -25,9 +25,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .fbtn[data-d="2"].on{background:#0c4a6e}
 .fbtn[data-d="3"].on{background:#4c1d95}
 .fbtn[data-d="4"].on{background:#064e3b}
-.main{display:flex;flex:1;overflow:hidden}
+.main{display:flex;flex:1;overflow:hidden;position:relative}
 #map{flex:1;z-index:1}
-.rpanel{width:288px;flex-shrink:0;background:rgba(6,14,31,.98);border-left:1px solid var(--border);overflow-y:auto;display:flex;flex-direction:column;z-index:2}
+.rpanel{display:none}
 .pe{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 16px;text-align:center}
 .pe-icon{font-size:1.9rem;margin-bottom:10px;filter:drop-shadow(0 0 10px rgba(56,189,248,.5))}
 .pe h3{font-size:13px;font-weight:700;color:rgba(226,232,240,.8);margin-bottom:5px}
@@ -78,9 +78,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .place-tooltip{background:rgba(6,14,31,.94)!important;border:1px solid rgba(255,255,255,.2)!important;border-radius:8px!important;color:#e2e8f0!important;box-shadow:0 8px 24px rgba(0,0,0,.42)!important;padding:0!important}
 .place-tooltip:before{border-right-color:rgba(6,14,31,.94)!important}.place-tooltip .leaflet-tooltip-content{margin:7px 9px!important}
 .tt-name{font-size:11px;font-weight:800;line-height:1.25}.tt-cat{font-size:9.5px;color:#94dfff;margin-top:2px}
-.map-summary{background:rgba(6,14,31,.93);border:1px solid rgba(255,255,255,.14);border-radius:12px;color:#e2e8f0;box-shadow:0 10px 28px rgba(0,0,0,.34);padding:10px 11px;min-width:194px;pointer-events:none}
-.map-summary h2{font-size:11px;letter-spacing:.04em;margin:0 0 7px;color:#f8fafc}.map-summary p{font-size:10px;color:rgba(226,232,240,.62);line-height:1.5;margin:0}.map-summary .summary-pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}.map-summary .summary-pills span{font-size:9.5px;border-radius:999px;padding:2px 6px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.22);color:#b9e7ff}
+.map-summary{background:rgba(255,255,255,.94);border:1px solid rgba(15,60,90,.15);border-radius:12px;color:#153047;box-shadow:0 8px 24px rgba(20,78,110,.18);padding:10px 11px;min-width:194px;pointer-events:none}
+.map-summary h2{font-size:11px;letter-spacing:.04em;margin:0 0 7px;color:#153047}.map-summary p{font-size:10px;color:rgba(21,48,71,.7);line-height:1.5;margin:0}.map-summary .summary-pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}.map-summary .summary-pills span{font-size:9.5px;border-radius:999px;padding:2px 6px;background:#e7f6ff;border:1px solid #b8e4f8;color:#216184}
 .category-chip{display:inline-flex;align-items:center;margin:0 0 8px;padding:3px 8px;border-radius:999px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.25);font-size:10px;font-weight:700;color:#8ddcff}
+.spot-rail{position:absolute;z-index:700;left:0;right:0;bottom:0;display:flex;gap:12px;overflow-x:auto;padding:0 22px 18px;scroll-snap-type:x proximity;scrollbar-width:none;pointer-events:auto}.spot-rail::-webkit-scrollbar{display:none}
+.spot-card{scroll-snap-align:start;flex:0 0 286px;min-height:92px;display:flex;align-items:center;gap:12px;padding:11px 14px;background:rgba(255,255,255,.96);border:1px solid rgba(38,105,139,.18);border-radius:22px;box-shadow:0 8px 22px rgba(20,78,110,.18);color:#152b3c;text-align:left;cursor:pointer;transition:transform .18s,box-shadow .18s;font-family:inherit}.spot-card:hover,.spot-card:focus-visible{transform:translateY(-3px);box-shadow:0 12px 30px rgba(20,78,110,.28);outline:3px solid rgba(56,189,248,.28)}
+.spot-card img{width:67px;height:67px;flex:0 0 67px;border-radius:13px;object-fit:cover;background:#dceef7}.spot-card-copy{min-width:0}.spot-card-title{font-size:13px;font-weight:800;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.spot-card-meta{font-size:11px;color:#4d7187;margin-top:4px}.spot-card-tag{display:inline-flex;margin-top:6px;padding:2px 7px;border-radius:999px;background:#e8f7ff;color:#18719d;font-size:10px;font-weight:700}
 .cm-ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid;animation:cmPulse 2s ease-out infinite;pointer-events:none}
 @keyframes cmPulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(2.2);opacity:0}}
 /* Popup styles */
@@ -101,10 +104,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
  @media(max-width:800px){
   .main{flex-direction:column}
   .rpanel{width:100%;height:48%;flex:none;border-left:none;border-top:1px solid var(--border)}
-  #map{height:52%;flex:none;min-height:0}
+  #map{height:100%;flex:none;min-height:0}
   .hdr{flex-direction:column;align-items:flex-start;padding:12px}
   .hdr-bs{margin-left:0;margin-top:8px}
-  .leaflet-popup-content{min-width:230px!important}
+  .leaflet-popup-content{min-width:230px!important}.spot-rail{padding:0 12px 12px;gap:9px}.spot-card{flex-basis:264px;min-height:84px;padding:9px 11px}.spot-card img{width:58px;height:58px;flex-basis:58px}
   .mobile-hide{display:none!important}
 }
 .fab-container{position:fixed;bottom:20px;left:20px;z-index:9999;display:flex;gap:10px}
@@ -147,6 +150,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 
 <div class="main">
  <div id="map"></div>
+ <div class="spot-rail" id="spotRail" aria-label="여행 장소 목록"></div>
  <div class="rpanel">
   <div class="pe" id="PE">
    <div class="pe-icon">📍</div>
@@ -185,8 +189,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 <script>
 const map=L.map('map',{center:[26.45,127.82],zoom:10,zoomControl:false});
 L.control.zoom({position:'bottomright'}).addTo(map);
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{
-  attribution:'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  attribution:'&copy; OpenStreetMap contributors',
   maxZoom:16
 }).addTo(map);
 
@@ -377,6 +381,7 @@ SPOTS.forEach(s=>{
   marker.on('click',()=>{
     showPanel(s);
     map.setView([s.lat,s.lng],13,{animate:true});
+    document.querySelector(`[data-spot-id="${s.id}"]`)?.focus({preventScroll:true});
   });
   markerObjs[s.id]=marker;
 });
@@ -403,6 +408,24 @@ function showPanel(s){
     <a href="${s.gmaps}" target="_blank" class="gmaps-btn">🗺️ 구글맵에서 열기</a>`;
 }
 
+function renderSpotRail(day){
+  const spots=SPOTS.filter(s=>day==='all'||s.d.toString()===day);
+  const rail=document.getElementById('spotRail');
+  rail.innerHTML=spots.map(s=>{
+    const category=categoryFor(s);
+    const detail=s.from ? `${s.from} · ${s.min ? `${s.min}분` : '도착'}` : '여행 시작 장소';
+    const image=s.img || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300&q=75';
+    return `<button type="button" class="spot-card" data-spot-id="${s.id}" aria-label="${s.name} 상세 보기"><img src="${image}" alt="" loading="lazy"><span class="spot-card-copy"><span class="spot-card-title">${s.icon} ${s.name}</span><span class="spot-card-meta">${detail}</span><span class="spot-card-tag">${category}</span></span></button>`;
+  }).join('');
+  rail.querySelectorAll('.spot-card').forEach(card=>card.addEventListener('click',()=>{
+    const spot=SPOTS.find(s=>s.id===card.dataset.spotId);
+    if(!spot) return;
+    markerObjs[spot.id].openPopup();
+    showPanel(spot);
+    map.setView([spot.lat,spot.lng],13,{animate:true});
+  }));
+}
+
 function fd(btn,day){
   document.querySelectorAll('.fbtn').forEach(b=>b.classList.toggle('on',b===btn));
   ROUTES.forEach(r=>{
@@ -426,7 +449,10 @@ function fd(btn,day){
     document.getElementById('PE').style.display='flex';
     document.getElementById('IB').style.display='none';
   }
+  renderSpotRail(day);
 }
+
+renderSpotRail('all');
 
 // Compact in-map guide keeps the large map readable while explaining every pin's detail is one click away.
 const SummaryControl=L.Control.extend({
