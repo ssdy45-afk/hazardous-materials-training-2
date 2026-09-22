@@ -54,7 +54,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .fce{font-size:1.05rem;flex-shrink:0;line-height:1.2}
 .fcn{font-size:12px;font-weight:700;color:var(--text);line-height:1.3}
 .fct{font-size:10px;background:rgba(56,189,248,.15);color:#7dd3fc;padding:1px 6px;border-radius:9999px;font-weight:600;display:inline-block;margin-top:2px}
-.fcd{font-size:11px;color:rgba(148,163,184,.6);line-height:1.5;margin-top:4px}
+.fcd{font-size:11px;color:rgba(148,163,184,.6);line-height:1.5;margin-top:4px}.fmeta{font-size:10.5px;color:#fbd38d;margin-top:6px}.factions{display:flex;gap:5px;margin-top:6px}.faction{display:inline-flex;align-items:center;justify-content:center;padding:5px 8px;border-radius:7px;font-size:10px;font-weight:700;text-decoration:none;color:#bdeaff;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.25)}.faction.hours{color:#ffe0a3;background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.26)}
 .gmaps-btn{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:11px;padding:9px;background:rgba(66,133,244,.12);border:1px solid rgba(66,133,244,.3);border-radius:9px;color:#7eb3ff;font-size:11.5px;font-weight:700;text-decoration:none;transition:all .2s}
 .gmaps-btn:hover{background:rgba(66,133,244,.22)}
 .bstrip{border-top:1px solid var(--border);padding:12px 15px;flex-shrink:0}
@@ -98,7 +98,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .pc-fe{font-size:1rem;flex-shrink:0;line-height:1.2}
 .pc-fn{font-size:11.5px;font-weight:700;color:#e2e8f0;line-height:1.3}
 .pc-ft{font-size:10px;color:#7dd3fc;background:rgba(56,189,248,.15);padding:1px 6px;border-radius:9999px;font-weight:600;display:inline-block;margin:2px 0}
-.pc-fd{font-size:10.5px;color:rgba(148,163,184,.6);line-height:1.45;margin-top:3px}
+.pc-fd{font-size:10.5px;color:rgba(148,163,184,.6);line-height:1.45;margin-top:3px}.food-hours{font-size:10px;color:#fbd38d;margin-top:5px}.food-actions{display:flex;gap:5px;margin-top:6px}.food-action{display:inline-flex;align-items:center;justify-content:center;padding:4px 7px;border-radius:6px;font-size:9.5px;font-weight:700;text-decoration:none;color:#bdeaff;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.25)}.food-action.hours{color:#ffe0a3;background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.26)}
 .pc-gmb{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:10px;padding:8px;background:rgba(66,133,244,.12);border:1px solid rgba(66,133,244,.28);border-radius:8px;color:#7eb3ff;font-size:11px;font-weight:700;text-decoration:none;transition:background .2s}
 .pc-gmb:hover{background:rgba(66,133,244,.22)}
  @media(max-width:800px){
@@ -204,119 +204,123 @@ const categoryFor=spot=>{
   if(/ATM|이온|돈키|파르코|쇼핑/.test(text)) return '쇼핑 · 편의';
   return '관광 · 체험';
 };
+const foodQuery=(food,spot)=>`${food.n} ${spot.name} Okinawa`;
+const foodSearchUrl=(food,spot)=>`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(foodQuery(food,spot))}`;
+const foodDirectionsUrl=(food,spot)=>`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(foodQuery(food,spot))}&travelmode=driving`;
+const foodHoursLabel=food=>food.h||'최신 영업시간은 지도에서 확인';
 
 const SPOTS=[
  {id:'s1',d:1,n:1,icon:'✈️',name:'나하 공항 & 렌트카 픽업',jp:'那覇空港 T1 · TRUSTGO レンタカー',lat:26.1961,lng:127.6460,from:null,min:null,km:null,img:'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
   note:'12:05 도착 → 입국수속 → 12:30 TRUSTGO 렌탈 픽업 (예약번호 S567J7). 국제운전면허증 필수!',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=26.1961,127.646',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Naha+Airport+26.1961%2C127.646',
   food:[{e:'🍙',n:'ポーたま 공항점',t:'주먹밥',d:'차량 픽업 전 간단히!'},{e:'🍜',n:'空港食堂',t:'오키나와 소바',d:'공항 1층 가성비 맛집'}]},
  {id:'atm1',d:1,n:1.5,lbl:'₩',col:'#ec4899',icon:'🏧',name:'[무료 ATM] 나하 공항 이온뱅크',jp:'イオン銀行ATM 那覇空港',lat:26.1950,lng:127.6455,from:'나하 공항 입국장',min:5,km:0.1,img:'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=400&q=80',
   note:'<b>트래블월렛 카드 인출 수수료 100% 무료!</b><br>렌트카 픽업 전에 공항에 있는 이온뱅크 ATM(분홍색 기계)에서 여행 동안 쓸 현금을 미리 찾아두시면 가장 편합니다.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Aeon+Bank+ATM+Naha+Airport',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=AEON+Bank+ATM+Naha+Airport+26.1950%2C127.6455',
   food:[]},
  {id:'s3',d:1,n:2,icon:'🍼',name:'파르코 시티 (아가짱 혼포)',jp:'PARCO CITY · アカチャンホンポ',lat:26.2642,lng:127.6975,from:'렌트카 픽업',min:20,km:12,img:'https://images.unsplash.com/photo-1519222970733-f546218fa6d7?w=400&q=80',
   note:'오키나와 아기용품 쇼핑 성지 1순위! 나고로 올라가는 길에 위치해 동선이 완벽합니다. 이곳 식당가나 푸드코트에서 바다를 보며 늦은 점심을 드세요!<br><a href="https://www.parcocity.jp/ko/" target="_blank" style="color:#38bdf8;text-decoration:underline">👉 파르코 시티 공식 홈페이지</a>',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=PARCO+CITY+Okinawa',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=PARCO+CITY+Okinawa+26.2642%2C127.6975',
   food:[{e:'🍱',n:'와후테이(和風亭)',t:'일본 가정식',d:'돈카츠,우동 등 정갈한 식사 (아기/임산부 강추)'},{e:'🍜',n:'잇푸도 라멘',t:'돈코츠 라멘',d:'한국인 입맛에 딱 맞는 진한 라멘'},{e:'🍦',n:'블루씰',t:'아이스크림',d:'식후 오키나와 명물 소금아이스크림'}]},
  {id:'s4',d:1,n:3,icon:'🏨',name:'오리엔탈 리조트 체크인',jp:'オリエンタルホテル沖縄',lat:26.5290,lng:127.9350,from:'파르코 시티',min:60,km:55,img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80',
   note:'고속도로 이용 나고시로 이동. 체크인 후 리조트 수영장 및 휴식.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Oriental+Hotel+Okinawa+Resort+Nago',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Oriental+Hotel+Okinawa+Resort+Nago+26.5290%2C127.9350',
   food:[{e:'🍣',n:'なごすし',t:'스시',d:'차로 10분 거리 신선한 초밥'}]},
  {id:'s_d1_din',d:1,n:3.5,icon:'🍲',name:'1일차 저녁 식사 (옵션 3곳 중 택1)',jp:'ディナー オプション',lat:26.5250,lng:127.9280,from:'호텔 체크인',min:5,km:1,img:'https://picsum.photos/seed/dinner1/400/300',
   note:'호텔 주변(도보 또는 차로 2분)에 위치한 <b>가성비 & 현지식</b> 맛집 후보입니다.<br><br><b>① 나카마 쇼쿠도(なかま食堂)</b>: 1~2천엔대로 가성비가 가장 좋고 오키나와식 정식을 편하게 먹을 수 있습니다.<br><b>② 우미모노가타리(海物語)</b>: 고야참푸루, 라후테 등을 나눠 먹기 좋은 오키나와식 이자카야입니다.<br><b>③ 카후 나카마 본점</b>: 호텔에서 800m로 걸어갈 만하며 아구돼지 샤브샤브가 훌륭합니다.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Nakama+Shokudo+Onna',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Nakama+Shokudo+Onna+26.5250%2C127.9280',
   food:[{e:'🍚',n:'나카마 쇼쿠도',t:'현지식/가성비',d:'부담없는 오키나와 밥집'},{e:'🏮',n:'우미모노가타리',t:'이자카야',d:'다양한 오키나와 현지 안주'},{e:'🥓',n:'카후 나카마',t:'샤브샤브',d:'도보로 산책 겸 다녀오기 좋음'}]},
  {id:'s2',d:1,n:4,icon:'🛒',name:'[추가 쇼핑] 나고 메가 돈키호테',jp:'MEGA ドン・キホーテ 名護店',lat:26.5888,lng:127.9866,from:'저녁 식사',min:15,km:10,img:'https://picsum.photos/seed/donki/400/300',
   note:'숙소 근처 새벽까지 영업하는 초대형 돈키호테! 첫날 저녁 식사 후 가볍게 야간 쇼핑을 즐겨보세요.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=MEGA+Don+Quijote+Nago',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=MEGA+Don+Quijote+Nago+26.5888%2C127.9866',
   food:[{e:'🍻',n:'주변 이자카야',t:'야식',d:'나고 시내에서 맥주 한잔!'}]},
  {id:'s5',d:2,n:1,icon:'🎟️',name:'쿄다 휴게소 (할인티켓 구매)',jp:'道の駅 許田',lat:26.5458,lng:127.9620,from:'오리엔탈 리조트',min:5,km:4,img:'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=400&q=80',
   note:'추라우미 수족관 가기 전 필수 코스! 오키나와 최저가로 수족관 티켓을 구매할 수 있습니다. 덤으로 쿄다 명물 튀김(텐푸라)도 맛보세요.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Michi-no-Eki+Kyoda',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Michi-no-Eki+Kyoda+26.5458%2C127.9620',
   food:[{e:'🍤',n:'쿄다 텐푸라',t:'간식',d:'휴게소 명물 야채/오징어 튀김!'},{e:'🥩',n:'소고기 꼬치',t:'간식',d:'야외 매대에서 파는 고소한 꼬치'}]},
  {id:'s6',d:2,n:2,icon:'🐠',name:'추라우미 수족관',jp:'美ら海水族館',lat:26.6938,lng:127.8783,from:'쿄다 휴게소',min:35,km:22,img:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80',
   note:'오전 방문 추천. 거대한 고래상어와 쥐가오리 관람 (약 2~3시간 소요).',
-  gmaps:'https://www.google.com/maps/place/美ら海水族館/@26.6938,127.8783,15z',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Okinawa+Churaumi+Aquarium+26.6938%2C127.8783',
   food:[{e:'🍜',n:'岸本食堂',t:'전통 소바',d:'100년 전통 오키나와 소바'}]},
  {id:'s7',d:2,n:3,icon:'🌴',name:'비세 후쿠기 가로수길',jp:'備瀬のフクギ並木',lat:26.7035,lng:127.8801,from:'추라우미 수족관',min:5,km:2,img:'https://images.unsplash.com/photo-1502085671122-2d218cd434e6?w=400&q=80',
   note:'수족관 바로 옆. 힐링 산책 및 자전거 대여 가능. 아름다운 옛 오키나와 풍경.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=26.7035,127.8801',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Bise+Fukugi+Tree+Road+26.7035%2C127.8801',
   food:[{e:'☕',n:'Ulu Cafe',t:'바다 뷰 카페',d:'가로수길 끝 바다가 보이는 카페'}]},
  {id:'s8',d:2,n:4,icon:'🍍',name:'[오후 선택 1] 나고 파인애플 파크',jp:'ナゴパイナップルパーク',lat:26.6186,lng:127.9557,from:'비세 후쿠기',min:30,km:20,img:'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=400&q=80',
   note:'임산부/아기 추천 1순위! 무인 자동 카트를 타고 열대 숲을 편안하게 관람합니다. 걷는 구간이 거의 없습니다.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Nago+Pineapple+Park',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Nago+Pineapple+Park+26.6186%2C127.9557',
   food:[{e:'🍦',n:'파인애플 아이스크림',t:'간식',d:'새콤달콤 아이스크림 필수!'}]},
  {id:'s9',d:2,n:5,icon:'🚤',name:'[오후 선택 2] 부세나 해중공원',jp:'ブセナ海中公園',lat:26.5385,lng:127.9288,from:'파인애플 파크',min:25,km:15,img:'https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?w=400&q=80',
   note:'옷이 젖지 않고 바닥이 투명한 글라스 보트를 타고 바닷속 열대어를 구경합니다. 숙소에서 차로 5분!',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Busena+Marine+Park',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Busena+Marine+Park+26.5385%2C127.9288',
   food:[]},
  {id:'s_d2_din',d:2,n:6,icon:'🍲',name:'2일차 저녁 식사 (옵션 3곳 중 택1)',jp:'ディナー オプション',lat:26.6210,lng:127.9620,from:'오후 관광지',min:10,km:5,img:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80',
   note:'<b>① 시마부타야(오키나와 흑돼지 편백찜)</b>: 연기가 안 나고 담백해 임산부/아기에게 최고입니다.<br>예약: <a href="https://okinawa-shimabutaya.com/" target="_blank" style="color:#38bdf8;text-decoration:underline">시마부타야 공식 홈페이지</a><br><br><b>② 우후야(백년고가 흑돼지정식)</b>: 파인애플 파크 근처. 폭포가 있는 100년 전통가옥이라 부모님/아내 만족도 최상!<br>예약: <b>필수</b>. <a href="https://ufuya.com/ko/" target="_blank" style="color:#38bdf8;text-decoration:underline">우후야 공식 홈페이지(한국어 지원)</a><br><br><b>③ 오리엔탈 리조트 디너 뷔페(QWACHI)</b>: 아기 먹일 음식이 가장 많고 이동 피로도가 0입니다.<br>예약: <a href="https://www.okinawa.oriental-hotels.com/kr/restaurant/qwachi/" target="_blank" style="color:#38bdf8;text-decoration:underline">리조트 뷔페 안내 (공홈)</a>',
-  gmaps:'https://www.google.com/maps',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Shimabutaya+Okinawa+26.6210%2C127.9620',
   food:[{e:'🍲',n:'시마부타야',t:'편백 찜',d:'기름기가 빠져 건강한 맛'},{e:'🏯',n:'우후야',t:'흑돼지/소바',d:'아름다운 폭포 뷰 전통가옥'},{e:'🏨',n:'리조트 뷔페',t:'다양한 메뉴',d:'이동할 필요 없는 완벽한 휴식'}]},
  {id:'s10',d:2,n:7,icon:'🛒',name:'나고 메가 돈키호테 & 니시마츠야',jp:'MEGA ドン・キホーテ 名護店',lat:26.5888,lng:127.9866,from:'식당',min:15,km:8,img:'https://picsum.photos/seed/donki/400/300',
   note:'저녁 식사 후 야간 쇼핑! 메가 돈키호테(새벽까지 영업) & 니시마츠야(가성비 아기옷)가 붙어있습니다.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=MEGA+Don+Quijote+Nago',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=MEGA+Don+Quijote+Nago+26.5888%2C127.9866',
   food:[{e:'🍻',n:'주변 이자카야',t:'야식',d:'나고 시내에서 맥주 한잔!'}]},
  {id:'atm2',d:2,n:7.5,lbl:'₩',col:'#ec4899',icon:'🏧',name:'[무료 ATM] 이온 나고점',jp:'イオン名護店',lat:26.5960,lng:127.9650,from:'돈키호테 / 식당',min:5,km:2,img:'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=400&q=80',
   note:'<b>트래블월렛 수수료 100% 무료!</b><br>돈키호테 근처에 있는 초대형 마트 "이온 나고점"입니다. 현금이 더 필요하시면 지나가시는 길에 이온뱅크 기기에서 출금하세요!',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Aeon+Nago',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Aeon+Nago+26.5960%2C127.9650',
   food:[]},
  {id:'s10b',d:2,n:8,icon:'🏨',name:'오리엔탈 리조트 복귀',jp:'オリエンタルホテル沖縄',lat:26.5290,lng:127.9350,from:'메가 돈키호테/이온',min:15,km:10,img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80',
   note:'2일차 북부 일정을 모두 마치고 숙소로 복귀하여 편안하게 휴식합니다.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Oriental+Hotel+Okinawa+Resort+Nago',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Oriental+Hotel+Okinawa+Resort+Nago+26.5290%2C127.9350',
   food:[]},
  {id:'s11',d:3,n:1,icon:'🏖️',name:'오전 리조트 수영장 & 비치 휴식',jp:'オリエンタルホテル沖縄',lat:26.5290,lng:127.9350,from:'객실',min:0,km:0,img:'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=400&q=80',
   note:'오전에는 무리하지 않고 리조트 내 수영장이나 버기로 이동 가능한 프라이빗 해변(카리유시 비치)에서 여유롭게 휴식하세요!',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Oriental+Hotel+Okinawa',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Oriental+Hotel+Okinawa+Resort+Nago+26.5290%2C127.9350',
   food:[{e:'🥐',n:'조식 뷔페',t:'호텔 식사',d:'오리엔탈 리조트의 맛있는 조식'}]},
  {id:'s12',d:3,n:2,icon:'🥩',name:'얏빠리 스테이크 아메리칸빌리지점',jp:'やっぱりステーキ アメリカンビレッジ店',lat:26.3160,lng:127.7570,from:'리조트 (나고시)',min:50,km:35,img:'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&q=80',
   note:'오전 휴식 후 점심! 가성비 최고로 유명한 오키나와 명물 "얏빠리 스테이크"입니다. 뜨거운 용암석 위에 지글지글 구워 먹는 재미가 있고 밥, 수프, 샐러드가 무한 리필입니다.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Yappari+Steak+American+Village',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Yappari+Steak+American+Village+26.3160%2C127.7570',
   food:[{e:'🔥',n:'얏빠리 스테이크',t:'가성비 최고',d:'부드러운 살코기 150g이 단돈 1천엔대!'},{e:'🍚',n:'셀프 바',t:'무한리필',d:'밥, 수프, 샐러드 맘껏 드세요'}]},
  {id:'s13',d:3,n:3,icon:'🌮',name:'아메리칸 빌리지',jp:'アメリカンビレッジ',lat:26.3166,lng:127.7576,from:'얏빠리 스테이크',min:5,km:1,img:'https://picsum.photos/seed/amvillage/400/300',
   note:'미국 서해안 분위기의 이국적인 쇼핑 단지. 맛있는 스테이크로 배를 채운 후 산책하며 구경하기 완벽합니다.',
-  gmaps:'https://www.google.com/maps/place/American+Village/@26.3166,127.7576,15z',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=American+Village+Okinawa+26.3166%2C127.7576',
   food:[{e:'☕',n:'지바고 커피',t:'오션뷰',d:'바다를 보며 마시는 여유로운 커피'}]},
  {id:'s14',d:3,n:4,icon:'🍼',name:'이온몰 라이카무 (쇼핑 & 저녁)',jp:'イオンモール沖縄ライカム',lat:26.3146,lng:127.7963,from:'아메리칸 빌리지',min:15,km:6,img:'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=80',
   note:'오키나와 최대 규모 쇼핑몰! 베비저러스, 몽벨, 포켓몬센터 쇼핑을 즐기신 후 <b>이온몰 내부에서 편하게 저녁 식사</b>까지 해결하기 아주 좋습니다.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Aeon+Mall+Okinawa+Rycom',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Aeon+Mall+Okinawa+Rycom+26.3146%2C127.7963',
   food:[{e:'🥩',n:'야키니쿠 나베시마',t:'야키니쿠',d:'이온몰 내 최고 인기! 깔끔한 와규 숯불구이'},{e:'🍣',n:'무텐쿠라스시',t:'회전초밥',d:'가성비 최고, 다 먹은 접시로 게임도 가능!'}]},
  {id:'atm3',d:3,n:4.5,lbl:'₩',col:'#ec4899',icon:'🏧',name:'[무료 ATM] 이온몰 라이카무 내부',jp:'イオンモール沖縄ライカム イオン銀行',lat:26.3146,lng:127.7963,from:'이온몰 내부',min:0,km:0,img:'https://picsum.photos/seed/atm3/400/300',
   note:'<b>트래블월렛 수수료 100% 무료!</b><br>오키나와 이온 그룹의 본진답게 쇼핑몰 내부 곳곳에 이온뱅크 ATM이 널려 있습니다. 쇼핑하시다가 여유롭게 인출하시면 됩니다.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Aeon+Mall+Okinawa+Rycom',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Aeon+Mall+Okinawa+Rycom+26.3146%2C127.7963',
   food:[]},
  {id:'s_d3_din',d:3,n:4.8,icon:'🍔',name:'3일차 저녁 식사 (옵션 3곳 중 택1)',jp:'ディナー オプション',lat:26.5260,lng:127.9290,from:'이온몰 라이카무',min:50,km:40,img:'https://picsum.photos/seed/dinner3/400/300',
   note:'호텔 주변(도보 또는 차로 2분)에 위치한 <b>아이 동반 & 양식</b> 맛집 후보입니다.<br><br><b>① 나카마 스테이크하우스(NAKAMA)</b>: 유아용 의자가 구비되어 있고 어른은 스테이크/아구돼지, 아이는 햄버그를 먹기 좋습니다.<br><b>② 쇼군 버거(Shogun Burger)</b>: 선셋몰 안 햄버거집! 부담 없이 와규 버거와 감자튀김을 즐기기 좋습니다.<br><b>③ 할레아이나 호아(hale\'aina HOA)</b>: 고기, 버거, 해산물 등 선택지가 다양한 하와이안 아메리칸 식당입니다.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Steakhouse+Nakama',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Steakhouse+Nakama+Okinawa+26.5260%2C127.9290',
   food:[{e:'🥩',n:'나카마 스테이크',t:'스테이크',d:'유아용 의자 완비! 아이 동반 강추'},{e:'🍔',n:'쇼군 버거',t:'수제버거',d:'선셋몰 내 위치, 부담없는 와규 버거'},{e:'🌺',n:'할레아이나 호아',t:'하와이안',d:'호불호 없는 아메리칸 스타일'}]},
  {id:'s14b',d:3,n:5,icon:'🏨',name:'오리엔탈 리조트 복귀',jp:'オリエンタルホテル沖縄',lat:26.5290,lng:127.9350,from:'저녁 식사',min:5,km:1,img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80',
   note:'3일차 쇼핑 일정을 모두 마치고 숙소로 복귀하여 오키나와에서의 마지막 밤을 보냅니다.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Oriental+Hotel+Okinawa+Resort+Nago',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Oriental+Hotel+Okinawa+Resort+Nago+26.5290%2C127.9350',
   food:[]},
  {id:'s15',d:4,n:1,icon:'🍔',name:'A&W 마키미나토점 (햄버거 픽업)',jp:'A&W 牧港店',lat:26.2652,lng:127.7158,from:'오리엔탈 리조트',min:50,km:45,img:'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&q=80',
   note:'오키나와의 명물 A&W 버거! 가장 유명한 레트로 미국식 드라이브인 매장입니다. 여기서 햄버거와 루트비어를 포장(픽업)해서 차 안이나 공항에서 드세요.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=A%26W+Makiminato',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=A%26W+Makiminato+26.2652%2C127.7158',
   food:[{e:'🍔',n:'모짜버거',t:'베스트셀러',d:'풍성한 야채와 모짜렐라 치즈의 조합!'},{e:'🥤',n:'루트비어',t:'명물',d:'물파스 맛(?)으로 유명한 A&W 상징 음료'}]},
  {id:'atm4',d:4,n:1.5,lbl:'₩',col:'#ec4899',icon:'🏧',name:'[무료 ATM] 맥스밸류 마키미나토점',jp:'マックスバリュ 牧港店',lat:26.2680,lng:127.7170,from:'A&W 마키미나토점',min:2,km:0.5,img:'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=400&q=80',
   note:'<b>트래블월렛 수수료 100% 무료!</b><br>A&W에서 햄버거를 포장하고 바로 근처에 있는 대형 마트(맥스밸류)에 들러서 귀국 전 남은 현금을 뽑거나 잔돈을 털기 좋습니다.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=MaxValu+Makiminato',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=MaxValu+Makiminato+26.2680%2C127.7170',
   food:[]},
  {id:'s15b',d:4,n:2,icon:'⛽',name:'렌트카 반납 전 주유소',jp:'ガソリンスタンド (満タン)',lat:26.1840,lng:127.6540,from:'맥스밸류',min:25,km:13,img:'https://picsum.photos/seed/gas/400/300',
   note:'렌트카 반납 전 필수로 거쳐야 하는 코스입니다! "만탄(가득) 레귤러(일반 휘발유)"라고 말씀하시거나 카드로 셀프 주유하신 뒤 영수증을 꼭 챙겨주세요.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Gas+Station+near+TRUSTGO+Okinawa',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Gas+Station+26.1840%2C127.6540+Okinawa',
   food:[]},
  {id:'s16',d:4,n:3,icon:'🚗',name:'렌트카 반납 (TRUSTGO)',jp:'TRUSTGO レンタカー 11:00',lat:26.1800,lng:127.6500,from:'주유소',min:5,km:1,img:'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=400&q=80',
   note:'11:00까지 차량 반납 완료! 반납 후 셔틀버스를 타고 나하 공항으로 이동합니다.',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=TRUSTGO+Rent+a+car+Okinawa',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=TRUSTGO+Rent+a+car+Okinawa+26.1800%2C127.6500',
   food:[]},
  {id:'s_d4_lun',d:4,n:3.5,icon:'🍜',name:'4일차 점심 식사 (나하공항 맛집 4선)',jp:'那覇空港 ランチ',lat:26.1950,lng:127.6460,from:'렌트카 셔틀 도착',min:10,km:5,img:'https://picsum.photos/seed/nahaairportfood/400/300',
   note:'귀국 전 나하 공항 내에서 든든하게 드실 수 있는 맛집 후보들입니다.<br><br><b>① 공항식당(1층)</b>: 가성비 최고! 오키나와 현지 가정식 (소키소바+쥬시 조합 강추)<br><b>② 류큐무라(4층)</b>: 오키나와 정통 소바 전문점<br><b>③ 류큐 회전초밥 미라이(4층)</b>: 아이와 함께 각자 좋아하는 초밥/우동을 골라 먹기 좋습니다.<br><b>④ 멘야구 모토나리(3층)</b>: 평점 4.4의 진한 일본 라멘집 (오키나와 소바를 안 좋아하시면 여기 추천!)',
-  gmaps:'https://www.google.com/maps/search/?api=1&query=Naha+Airport',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Naha+Airport+26.1950%2C127.6460',
   food:[{e:'🍜',n:'공항식당(1F)',t:'가성비 최고',d:'소키소바+쥬시 꿀조합'},{e:'🍲',n:'류큐무라(4F)',t:'소바',d:'공항 4층 정통 오키나와 소바'},{e:'🍣',n:'미라이(4F)',t:'회전초밥',d:'아이와 골라먹기 좋음'},{e:'🍥',n:'모토나리(3F)',t:'일본 라멘',d:'소바 말고 라멘이 땡길 때'}]},
  {id:'s17',d:4,n:4,icon:'✈️',name:'탑승 수속 & 귀국',jp:'那覇空港 T1 · LJ0342',lat:26.1955,lng:127.6455,from:'점심 식사',min:5,km:0.1,img:'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
   note:'13:15 진에어 탑승. 남는 시간에 아까 픽업한 햄버거를 드시거나 면세점 쇼핑을 즐기세요!',
-  gmaps:'https://www.google.com/maps/place/Naha+Airport/@26.1955,127.6455,15z',
+  gmaps:'https://www.google.com/maps/search/?api=1&query=Naha+Airport+26.1955%2C127.6455',
   food:[{e:'🍠',n:'베니이모 타르트',t:'기념품',d:'출국 전 면세점에서 꼭 사야할 간식!'}]}
 ];
 
@@ -363,7 +367,7 @@ SPOTS.forEach(s=>{
     <div style="font-size:12px;color:#fcd34d;font-weight:700">🚩 출발점 · TRUSTGO 렌트카 픽업 (12:30)</div></div>`;
   const foodH=s.food.slice(0,3).map(f=>`<div class="pc-fc">
     <span class="pc-fe">${f.e}</span>
-    <div><div class="pc-fn">${f.n}</div><span class="pc-ft">${f.t}</span><div class="pc-fd">${f.d}</div></div>
+    <div><div class="pc-fn">${f.n}</div><span class="pc-ft">${f.t}</span><div class="pc-fd">${f.d}</div><div class="food-hours">🕒 ${foodHoursLabel(f)}</div><div class="food-actions"><a class="food-action" href="${foodDirectionsUrl(f,s)}" target="_blank" rel="noopener">🚗 길안내</a><a class="food-action hours" href="${foodSearchUrl(f,s)}" target="_blank" rel="noopener">🕒 영업시간</a></div></div>
   </div>`).join('');
   marker.bindPopup(`<div style="min-width:238px;max-width:268px">
     <span class="pc-badge" style="background:${col}18;border-color:${col}55;color:${col}">${s.icon} ${DL[s.d]}</span>
@@ -398,7 +402,7 @@ function showPanel(s){
     <div class="dr"><span class="dl">⏱ 소요</span><span class="dv" style="color:#38bdf8">${ts}</span></div>
     <div class="dr"><span class="dl">🗺 거리</span><span class="dv">${s.km} km</span></div></div>`:
     `<div class="dc" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.3)"><div style="font-size:12px;color:#fcd34d;font-weight:700">🚩 여행 출발점 · 나하공항 TRUSTGO 렌트카 픽업</div></div>`;
-  const fH=s.food.map(f=>`<div class="fcard"><div class="fc-t"><span class="fce">${f.e}</span><div><div class="fcn">${f.n}</div><span class="fct">${f.t}</span></div></div><div class="fcd">${f.d}</div></div>`).join('');
+  const fH=s.food.map(f=>`<div class="fcard"><div class="fc-t"><span class="fce">${f.e}</span><div><div class="fcn">${f.n}</div><span class="fct">${f.t}</span></div></div><div class="fcd">${f.d}</div><div class="fmeta">🕒 ${foodHoursLabel(f)}</div><div class="factions"><a class="faction" href="${foodDirectionsUrl(f,s)}" target="_blank" rel="noopener">🚗 길안내</a><a class="faction hours" href="${foodSearchUrl(f,s)}" target="_blank" rel="noopener">🕒 영업시간</a></div></div>`).join('');
   ib.innerHTML=`<span class="ibadge" style="background:${col}18;border-color:${col}55;color:${col}">${s.icon} ${DL[s.d]}</span>
     <div class="iname">${s.name}</div><div class="ijp">${s.jp}</div>
     <span class="category-chip">${categoryFor(s)}</span>
