@@ -27,7 +27,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .fbtn[data-d="4"].on{background:#064e3b}
 .main{display:flex;flex:1;overflow:hidden}
 #map{flex:1;z-index:1}
-.rpanel{width:312px;flex-shrink:0;background:rgba(6,14,31,.98);border-left:1px solid var(--border);overflow-y:auto;display:flex;flex-direction:column;z-index:2}
+.rpanel{width:288px;flex-shrink:0;background:rgba(6,14,31,.98);border-left:1px solid var(--border);overflow-y:auto;display:flex;flex-direction:column;z-index:2}
 .pe{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 16px;text-align:center}
 .pe-icon{font-size:1.9rem;margin-bottom:10px;filter:drop-shadow(0 0 10px rgba(56,189,248,.5))}
 .pe h3{font-size:13px;font-weight:700;color:rgba(226,232,240,.8);margin-bottom:5px}
@@ -75,6 +75,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 /* Custom marker */
 .cm{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;color:white;border:2.5px solid rgba(255,255,255,.9);box-shadow:0 4px 12px rgba(0,0,0,.5);cursor:pointer;position:relative;transition:transform .15s}
 .cm:hover{transform:scale(1.18)!important}
+.place-tooltip{background:rgba(6,14,31,.94)!important;border:1px solid rgba(255,255,255,.2)!important;border-radius:8px!important;color:#e2e8f0!important;box-shadow:0 8px 24px rgba(0,0,0,.42)!important;padding:0!important}
+.place-tooltip:before{border-right-color:rgba(6,14,31,.94)!important}.place-tooltip .leaflet-tooltip-content{margin:7px 9px!important}
+.tt-name{font-size:11px;font-weight:800;line-height:1.25}.tt-cat{font-size:9.5px;color:#94dfff;margin-top:2px}
+.map-summary{background:rgba(6,14,31,.93);border:1px solid rgba(255,255,255,.14);border-radius:12px;color:#e2e8f0;box-shadow:0 10px 28px rgba(0,0,0,.34);padding:10px 11px;min-width:194px;pointer-events:none}
+.map-summary h2{font-size:11px;letter-spacing:.04em;margin:0 0 7px;color:#f8fafc}.map-summary p{font-size:10px;color:rgba(226,232,240,.62);line-height:1.5;margin:0}.map-summary .summary-pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}.map-summary .summary-pills span{font-size:9.5px;border-radius:999px;padding:2px 6px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.22);color:#b9e7ff}
+.category-chip{display:inline-flex;align-items:center;margin:0 0 8px;padding:3px 8px;border-radius:999px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.25);font-size:10px;font-weight:700;color:#8ddcff}
 .cm-ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid;animation:cmPulse 2s ease-out infinite;pointer-events:none}
 @keyframes cmPulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(2.2);opacity:0}}
 /* Popup styles */
@@ -186,6 +192,14 @@ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_D
 
 const COL={1:'#f59e0b',2:'#38bdf8',3:'#a78bfa',4:'#34d399'};
 const DL={1:'DAY1 · 9/23 도착',2:'DAY2 · 9/24 중부',3:'DAY3 · 9/25 남부',4:'DAY4 · 9/26 귀국'};
+const categoryFor=spot=>{
+  const text=`${spot.name} ${spot.jp}`;
+  if(/공항|TRUSTGO|렌트카|주유소|A&W/.test(text)) return '이동 · 출발/귀국';
+  if(/호텔|리조트|수영장|비치/.test(text)) return '숙소 · 휴식';
+  if(/식사|스테이크|쇼쿠도|라멘|버거/.test(text)) return '맛집 · 식사';
+  if(/ATM|이온|돈키|파르코|쇼핑/.test(text)) return '쇼핑 · 편의';
+  return '관광 · 체험';
+};
 
 const SPOTS=[
  {id:'s1',d:1,n:1,icon:'✈️',name:'나하 공항 & 렌트카 픽업',jp:'那覇空港 T1 · TRUSTGO レンタカー',lat:26.1961,lng:127.6460,from:null,min:null,km:null,img:'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
@@ -330,6 +344,10 @@ SPOTS.forEach(s=>{
   </div>`;
   const icon=L.divIcon({className:'',html,iconSize:[32,32],iconAnchor:[16,16],popupAnchor:[0,-20]});
   const marker=L.marker([s.lat,s.lng],{icon}).addTo(map);
+  const category=categoryFor(s);
+  marker.bindTooltip(`<div class="tt-name">${s.icon} ${s.name}</div><div class="tt-cat">${category}</div>`,{
+    direction:'right',offset:[15,0],opacity:1,className:'place-tooltip',sticky:true
+  });
 
   // Popup
   const h=Math.floor((s.min||0)/60),m=(s.min||0)%60;
@@ -347,6 +365,7 @@ SPOTS.forEach(s=>{
     <span class="pc-badge" style="background:${col}18;border-color:${col}55;color:${col}">${s.icon} ${DL[s.d]}</span>
     <div class="pc-name">${s.name}</div>
     <div class="pc-jp">${s.jp}</div>
+    <span class="category-chip">${category}</span>
     ${s.img ? `<img src="${s.img}" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin:10px 0;border:1px solid rgba(255,255,255,.1)">` : ''}
     ${drH}
     <div class="pc-note">${s.note}</div>
@@ -377,6 +396,7 @@ function showPanel(s){
   const fH=s.food.map(f=>`<div class="fcard"><div class="fc-t"><span class="fce">${f.e}</span><div><div class="fcn">${f.n}</div><span class="fct">${f.t}</span></div></div><div class="fcd">${f.d}</div></div>`).join('');
   ib.innerHTML=`<span class="ibadge" style="background:${col}18;border-color:${col}55;color:${col}">${s.icon} ${DL[s.d]}</span>
     <div class="iname">${s.name}</div><div class="ijp">${s.jp}</div>
+    <span class="category-chip">${categoryFor(s)}</span>
     ${s.img ? `<img src="${s.img}" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin:12px 0;border:1px solid rgba(255,255,255,.05)">` : ''}
     ${drH}<div class="inote">${s.note}</div>
     ${s.food.length ? '<div class="fh">🍽️ 주변 추천 맛집/정보</div>' : ''}${fH}
@@ -407,6 +427,17 @@ function fd(btn,day){
     document.getElementById('IB').style.display='none';
   }
 }
+
+// Compact in-map guide keeps the large map readable while explaining every pin's detail is one click away.
+const SummaryControl=L.Control.extend({
+  options:{position:'topleft'},
+  onAdd(){
+    const d=L.DomUtil.create('section','map-summary');
+    d.innerHTML=`<h2>📍 여행 장소 지도</h2><p>색상은 날짜별 동선 · 숫자는 방문 순서</p><p>핀에 마우스를 올리면 장소명·카테고리,<br>클릭하면 상세 일정과 맛집을 확인합니다.</p><div class="summary-pills"><span>✈ 이동</span><span>🏨 숙소</span><span>🍽 식사</span><span>🛍 쇼핑</span><span>🌊 관광</span></div>`;
+    L.DomEvent.disableClickPropagation(d); return d;
+  }
+});
+new SummaryControl().addTo(map);
 
 // Legend control
 const LC=L.Control.extend({
